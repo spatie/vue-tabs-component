@@ -27,4 +27,5 @@
             this.isActive = this.selected;
         },
     }
+
 </script>
