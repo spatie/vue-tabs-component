@@ -3,7 +3,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.vue$/,
-                loaders: ['vue'],
+                loaders: ['vue-loader'],
             },
             {
                 test: /\.js/,

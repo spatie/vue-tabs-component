@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "jsnext:main": "src/index.js",
   "scripts": {
+    "start": "webpack-dev-server",
     "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.dist.js",
     "lint": "eslint --fix src __tests__; exit 0",
     "prepublish": "npm run test; npm run build",
@@ -38,7 +39,9 @@
     "vue": "^2.0.3",
     "vue-loader": "^12.0.3",
     "vue-template-compiler": "^2.3.2",
-    "vue-unit": "^0.2.0"
+    "vue-unit": "^0.2.0",
+    "webpack": "^2.3.3",
+    "webpack-dev-server": "^2.4.2"
   },
   "jest": {
     "testRegex": "test.js$",
