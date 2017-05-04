@@ -1,5 +1,5 @@
 {
-  "name": "vue-tabs",
+  "name": "@spatie/attachment-uploader",
   "version": "0.0.1",
   "description": "A Vue component to easily render tabs",
   "main": "dist/index.js",
