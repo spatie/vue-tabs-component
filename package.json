@@ -1,14 +1,14 @@
 {
   "name": "vue-tabs",
-  "version": "0.1.0",
-  "description": "An easy way to add tabs",
+  "version": "0.0.1",
+  "description": "A Vue component to easily render tabs",
   "main": "dist/index.js",
   "jsnext:main": "src/index.js",
   "scripts": {
-    "build": "babel src -d dist",
+    "build": "jest babel src -d dist",
     "lint": "eslint src",
-    "prepublish": "npm run build",
-    "test": "mocha-webpack --webpack-config webpack.config.js test --recursive --require test/.setup.js"
+    "prepublish": "npm run test; npm run build",
+    "test": "jest"
   },
   "repository": {
     "type": "git",

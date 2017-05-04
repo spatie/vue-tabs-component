@@ -1,10 +1,30 @@
-# vue-tabs
+# A Vue component to easily render tabs
 
 [![Latest Version on NPM](https://img.shields.io/npm/v/vue-tabs.svg?style=flat-square)](https://npmjs.com/package/vue-tabs)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://img.shields.io/travis/spatie/vue-tabs/master.svg?style=flat-square)](https://travis-ci.org/spatie/vue-tabs)
 
-This is where your description should go. 
+The package contains Vue components to easily display some tabs.
+
+This is how they can be used:
+
+```html
+<div>
+    <Tabs>
+        <Tab name="First tab">
+            First tab content
+        </Tab>
+        <Tab name="Second tab">
+            Second tab content
+        </Tab>
+        <Tab name="Second tab">
+            Third tab content
+        </Tab>
+    </Tabs>
+</div>
+```
+
+[Here's a demo](TO DO: add link) that shows how that content could look like.
 
 ## Postcardware
 
@@ -24,10 +44,32 @@ $ yarn add vue-tabs
 
 ## Usage
 
-```js
-const myPackage = require('my-package');
+The most common use case is to register the component globally
 
-myPackage.doStuff();
+```js
+//in your app.js or similar file
+import Vue from 'vue';
+import Tabs from 'vue-tabs';
+
+Vue.component(Tabs);
+```
+
+On your page you can now use html like this to render tabs: 
+
+```html
+<div>
+    <Tabs>
+        <Tab name="First tab">
+            First tab content
+        </Tab>
+        <Tab name="Second tab">
+            Second tab content
+        </Tab>
+        <Tab name="Second tab">
+            Third tab content
+        </Tab>
+    </Tabs>
+</div>
 ```
 
 ## Change log
