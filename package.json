@@ -6,7 +6,7 @@
   "jsnext:main": "src/index.js",
   "scripts": {
     "build": "jest babel src -d dist",
-    "lint": "eslint src",
+    "lint": "eslint --fix src __tests__; exit 0",
     "prepublish": "npm run test; npm run build",
     "test": "jest"
   },
