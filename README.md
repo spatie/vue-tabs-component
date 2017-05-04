@@ -39,7 +39,7 @@ All postcards are published [on our website](https://spatie.be/opensource/postca
 You can install the package via yarn:
 
 ```bash
-$ yarn add vue-tabs
+$ yarn add @spatie/vue-tabs
 ```
 
 ## Usage
