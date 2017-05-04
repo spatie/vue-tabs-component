@@ -1,33 +1,45 @@
 {
-  "name": ":package_name",
+  "name": "vue-tabs",
   "version": "0.1.0",
-  "description": ":package_description",
+  "description": "An easy way to add tabs",
   "main": "dist/index.js",
   "jsnext:main": "src/index.js",
   "scripts": {
     "build": "babel src -d dist",
     "lint": "eslint src",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "test": "mocha-webpack --webpack-config webpack.config.js test --recursive --require test/.setup.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/:github_organization/:package_name.git"
+    "url": "https://github.com/spatie/vue-tabs.git"
   },
   "keywords": [
     "spatie"
   ],
-  "author": ":author_name",
+  "author": "Freek Van der Herten",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/:github_organization/:package_name/issues"
+    "url": "https://github.com/spatie/vue-tabs/issues"
   },
-  "homepage": "https://github.com/:github_organization/:package_name",
+  "homepage": "https://github.com/spatie/vue-tabs",
+  "peerDependencies": {
+    "vue": "^2.0.3"
+  },
   "devDependencies": {
     "babel-cli": "^6.9.0",
     "babel-plugin-transform-object-rest-spread": "^6.16.0",
     "babel-preset-es2015": "^6.9.0",
     "eslint": "^3.7.1",
     "eslint-config-spatie": "^1.1.0",
-    "jest": "^16.0.0"
+    "jest": "^16.0.0",
+    "vue": "^2.0.3",
+    "vue-unit": "^0.2.0"
+  },
+  "jest": {
+    "testRegex": "test.js$"
+  },
+  "dependencies": {
+    "avoriaz": "^1.11.2"
   }
 }
