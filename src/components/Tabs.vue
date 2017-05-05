@@ -32,6 +32,14 @@
         },
 
         mounted() {
+            const tabWithHash = this.findTab(window.location.hash);
+
+            if (tabWithHash) {
+                this.selectTab(tabWithHash);
+
+                return;
+            }
+
             if (this.tabs.length) {
                 this.selectTab(this.tabs[0]);
             }
@@ -44,6 +52,10 @@
                 });
 
                 this.$emit('changed', { tab: selectedTab });
+            },
+
+            findTab(href) {
+                return this.tabs.find(tab => tab.realHref === href);
             }
         },
     };
