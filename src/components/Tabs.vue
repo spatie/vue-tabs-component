@@ -22,11 +22,14 @@
             Tab
         },
 
+/*
         mixins: [saveState],
+*/
 
         data() {
             return {
-                tabs: []
+                tabs: [],
+                activeTabHref: '',
             };
         },
 
@@ -59,7 +62,8 @@
 
             findTab(href) {
                 return this.tabs.find(tab => tab.realHref === href);
-            }
+            },
         },
     };
+
 </script>
