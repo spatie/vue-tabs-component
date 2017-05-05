@@ -8,19 +8,21 @@
     export default {
         props: {
             name: { required: true },
-            selected: { default: false }
+            selected: { default: false },
+            href: { default: false },
         },
 
         data() {
             return {
                 isActive: false,
+                realHref: false,
             };
         },
 
-        computed: {
-            href() {
-                return '#' + this.name.toLowerCase().replace(/ /g, '-');
-            },
+        created() {
+            this.realHref = this.href
+                ? '#'+this.href
+                : '#' + this.name.toLowerCase().replace(/ /g, '-');
         },
 
         mounted() {
