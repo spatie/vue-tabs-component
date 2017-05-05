@@ -1,5 +1,5 @@
 const path = require('path');
-const config = Object.assign({}, require('./webpack.config'));
+const config = Object.assign({}, require('./webpack.base'));
 
 config.context = __dirname;
 

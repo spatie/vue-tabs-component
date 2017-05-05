@@ -12,17 +12,17 @@ This is how they can be used:
 
 ```html
 <div>
-    <Tabs>
-        <Tab name="First tab">
+    <tabs>
+        <tab name="First tab">
             First tab content
-        </Tab>
-        <Tab name="Second tab">
+        </tab>
+        <tab name="Second tab">
             Second tab content
-        </Tab>
-        <Tab name="Third tab">
+        </tab>
+        <tab name="Third tab">
             Third tab content
-        </Tab>
-    </Tabs>
+        </tab>
+    </tabs>
 </div>
 ```
 
@@ -51,26 +51,27 @@ The most common use case is to register the component globally
 ```js
 //in your app.js or similar file
 import Vue from 'vue';
-import Tabs from 'vue-tabs';
+import {tabs, tab} from 'vue-tabs';
 
-Vue.component(Tabs);
+Vue.component('tabs', Tabs);
+Vue.component('tab', Tab);
 ```
 
 On your page you can now use html like this to render tabs: 
 
 ```html
 <div>
-    <Tabs>
-        <Tab name="First tab">
+    <tabs>
+        <tab name="First tab">
             First tab content
-        </Tab>
-        <Tab name="Second tab">
+        </tab>
+        <tab name="Second tab">
             Second tab content
-        </Tab>
-        <Tab name="Third tab">
+        </tab>
+        <tab name="Third tab">
             Third tab content
-        </Tab>
-    </Tabs>
+        </tab>
+    </tabs>
 </div>
 ```
 
