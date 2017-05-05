@@ -26,6 +26,5 @@
         mounted() {
             this.isActive = this.selected;
         },
-    }
-
+    };
 </script>

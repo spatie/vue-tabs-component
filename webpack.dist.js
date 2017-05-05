@@ -14,9 +14,6 @@ config.output = {
 
 config.externals = {
     'vue': 'vue',
-    'lodash': 'lodash',
-    'spatie-dom': 'spatie-dom',
-    '@spatie/blender-media': '@spatie/blender-media',
 };
 
 module.exports = config;

@@ -17,7 +17,7 @@ This is how they can be used:
         <Tab name="Second tab">
             Second tab content
         </Tab>
-        <Tab name="Second tab">
+        <Tab name="Third tab">
             Third tab content
         </Tab>
     </Tabs>
@@ -65,7 +65,7 @@ On your page you can now use html like this to render tabs:
         <Tab name="Second tab">
             Second tab content
         </Tab>
-        <Tab name="Second tab">
+        <Tab name="Third tab">
             Third tab content
         </Tab>
     </Tabs>

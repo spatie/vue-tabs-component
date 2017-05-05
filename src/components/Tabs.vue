@@ -14,29 +14,29 @@
 </template>
 
 <script>
-import Tab from './tab';
+    import Tab from './Tab.vue';
 
-export default {
-    components: {
-        Tab
-    },
+    export default {
+        components: {
+            Tab
+        },
 
-    data() {
-        return {
-            tabs: []
-        };
-    },
+        data() {
+            return {
+                tabs: []
+            };
+        },
 
-    created() {
-        this.tabs = this.$children;
-    },
+        created() {
+            this.tabs = this.$children;
+        },
 
-    methods: {
-        selectTab(selectedTab) {
-            this.tabs.forEach(tab => {
-                tab.isActive = (tab.href == selectedTab.href);
-            });
-        }
-    },
-};
+        methods: {
+            selectTab(selectedTab) {
+                this.tabs.forEach(tab => {
+                    tab.isActive = (tab.href === selectedTab.href);
+                });
+            }
+        },
+    };
 </script>
