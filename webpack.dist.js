@@ -1,5 +1,5 @@
 const path = require('path');
-const config = Object.assign({}, require('./webpack.base'));
+const config = Object.assign({}, require('./webpack.config'));
 
 config.context = __dirname;
 
@@ -13,7 +13,7 @@ config.output = {
 };
 
 config.externals = {
-    'vue': 'vue',
+    vue: 'vue',
 };
 
 module.exports = config;

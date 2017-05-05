@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`save-state can mount tabs 1`] = `
+"
+            <div id=\\"app\\"><div><div class=\\"tabs\\"><ul></ul></div> <div class=\\"tabs-details\\"><div style=\\"display: none;\\">
+                        Hello
+                    </div></div></div></div>
+        "
+`;
