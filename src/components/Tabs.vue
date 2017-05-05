@@ -42,6 +42,8 @@
                 this.tabs.forEach(tab => {
                     tab.isActive = (tab.realHref === selectedTab.realHref);
                 });
+
+                this.$emit('changed', { tab: selectedTab });
             }
         },
     };
