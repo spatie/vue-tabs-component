@@ -91,7 +91,7 @@ You can customize that fragment by using the `href` attribute.
 </div>
 ```
 
-Clicking on `My tab` wil then append `#custom-href` to the url.
+Clicking on `My tab` will then append `#custom-href` to the url.
 
 ## Change log
 
