@@ -75,6 +75,24 @@ On your page you can now use html like this to render tabs:
 </div>
 ```
 
+### Customizing fragments
+
+When clicking on a tab it's name will be used as a fragment in the url. For example clicking on the `Second tab` will append `#second-tab` to the current url. 
+
+You can customize that fragment by using the `href` attribute.
+
+```html
+<div>
+    <tabs>
+        <tab name="My tab" href="custom-href">
+            First tab content
+        </tab>
+    </tabs>
+</div>
+```
+
+Clicking on `My tab` wil then append `#custom-href` to the url.
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
