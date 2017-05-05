@@ -14,12 +14,15 @@
 </template>
 
 <script>
+    import saveState from 'vue-save-state';
     import Tab from './Tab.vue';
 
     export default {
         components: {
             Tab
         },
+
+        mixins: [saveState],
 
         data() {
             return {
