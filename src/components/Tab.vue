@@ -12,6 +12,12 @@
             href: { default: false },
         },
 
+        computed: {
+            header() {
+                return this.name;
+            },
+        },
+
         data() {
             return {
                 isActive: false,
