@@ -14,17 +14,12 @@
 </template>
 
 <script>
-    import saveState from 'vue-save-state';
     import Tab from './Tab.vue';
 
     export default {
         components: {
             Tab
         },
-
-/*
-        mixins: [saveState],
-*/
 
         data() {
             return {
@@ -38,6 +33,14 @@
         },
 
         mounted() {
+           const previousSelectedTab = this.findTab(localStorage.getItem(this.determineLocalStorageKey()));
+
+           if (previousSelectedTab) {
+                this.selectTab(previousSelectedTab);
+
+                return;
+           }
+
             const tabWithHash = this.findTab(window.location.hash);
 
             if (tabWithHash) {
@@ -58,12 +61,20 @@
                 });
 
                 this.$emit('changed', { tab: selectedTab });
+
+                localStorage.setItem(this.determineLocalStorageKey(),  selectedTab.realHref);
             },
 
             findTab(href) {
                 return this.tabs.find(tab => tab.realHref === href);
             },
+
+            determineLocalStorageKey() {
+                return 'tabs.cacheKey';
+            },
         },
     };
+
+
 
 </script>
