@@ -3,7 +3,9 @@
         <div class="tabs">
             <ul>
                 <li v-for="tab in tabs" :class="{ 'is-active': tab.isActive }">
-                    <a :href="tab.realHref" @click="selectTab(tab)">{{ tab.header }}</a>
+                    <a :href="tab.realHref" @click="selectTab(tab)">
+                        <div v-html="tab.header"></div>
+                    </a>
                 </li>
             </ul>
         </div>
