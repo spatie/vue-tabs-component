@@ -26,7 +26,9 @@ This is how they can be used:
 </div>
 ```
 
-[Here's a demo](TO DO: add link) that shows how that content could look like.
+## Demo
+
+If you clone this package and run `yarn start` inside that directory you can see a demo at `http://localhost:2000`.
 
 ## Postcardware
 
@@ -43,11 +45,6 @@ You can install the package via yarn:
 ```bash
 yarn add spatie-vue-tabs
 ```
-
-## Demo
-
-If you clone this package and run `yarn start` inside that directory you can see a demo at `http://localhost:2000`.
-
 
 ## Usage
 
