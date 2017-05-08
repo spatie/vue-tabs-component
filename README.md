@@ -93,7 +93,7 @@ You can change the cache life time by passing the lifetime in minutes in the `ca
 </tabs>
 ```
 
-### Customizing fragments
+## Customizing fragments
 
 When clicking on a tab it's name will be used as a fragment in the url. For example clicking on the `Second tab` will append `#second-tab` to the current url. 
 
