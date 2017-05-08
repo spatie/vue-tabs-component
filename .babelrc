@@ -4,10 +4,15 @@
       "targets": {
         "browsers": ["last 2 versions", "safari >= 7"]
       },
-      "modules": false
+      "modules": "commonjs"
     }]
   ],
   "plugins": [
-    "transform-object-rest-spread"
+    "transform-object-rest-spread",
+    "transform-async-to-generator",
+    ["transform-runtime", {
+      "polyfill": false,
+      "regenerator": true
+    }]
   ]
 }

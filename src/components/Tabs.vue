@@ -35,14 +35,6 @@
         },
 
         mounted() {
-           const previousSelectedTab = this.findTab(localStorage.getItem(this.determineLocalStorageKey()));
-
-           if (previousSelectedTab) {
-                this.selectTab(previousSelectedTab);
-
-                return;
-           }
-
             const tabWithHash = this.findTab(window.location.hash);
 
             if (tabWithHash) {
@@ -50,6 +42,14 @@
 
                 return;
             }
+
+           const previousSelectedTab = this.findTab(localStorage.getItem(this.determineLocalStorageKey()));
+
+           if (previousSelectedTab) {
+                this.selectTab(previousSelectedTab);
+
+                return;
+           }
 
             if (this.tabs.length) {
                 this.selectTab(this.tabs[0]);
@@ -63,7 +63,7 @@
                 });
 
                 this.$emit('changed', { tab: selectedTab });
-
+                console.log('changed to',  selectedTab.realHref);
                 localStorage.setItem(this.determineLocalStorageKey(),  selectedTab.realHref);
             },
 
@@ -76,6 +76,7 @@
             },
         },
     };
+
 
 
 

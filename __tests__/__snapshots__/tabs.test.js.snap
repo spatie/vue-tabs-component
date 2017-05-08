@@ -1,9 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`save-state can mount tabs 1`] = `
+exports[`vue-tabs can mount tabs 1`] = `
 "
-            <div id=\\"app\\"><div><div class=\\"tabs\\"><ul></ul></div> <div class=\\"tabs-details\\"><div style=\\"display: none;\\">
-                        Hello
+            <div id=\\"app\\"><div><div class=\\"tabs\\"><ul><li class=\\"is-active\\"><a href=\\"#first-tab\\"><div>First tab</div></a></li><li class=\\"\\"><a href=\\"#second-tab\\"><div>Second tab</div></a></li><li class=\\"\\"><a href=\\"#third-tab\\"><div>Third tab</div></a></li></ul></div> <div class=\\"tabs-details\\"><div style=\\"\\">
+                        First tab content
+                    </div> <div style=\\"display: none;\\">
+                        Second tab content
+                    </div> <div style=\\"display: none;\\">
+                        Third tab content
                     </div></div></div></div>
         "
 `;
