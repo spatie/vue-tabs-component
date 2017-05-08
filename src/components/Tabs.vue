@@ -39,19 +39,13 @@
         },
 
         mounted() {
-            const tabWithHash = this.findTab(window.location.hash);
-
-            if (tabWithHash) {
+            if (const tabWithHash = this.findTab(window.location.hash)) {
                 this.selectTab(tabWithHash);
-
                 return;
             }
 
-           const previousSelectedTab = this.retrieveChosenTab();
-
-           if (previousSelectedTab) {
+           if (const previousSelectedTab = this.retrieveSelectedTab()) {
                 this.selectTab(previousSelectedTab);
-
                 return;
            }
 
@@ -68,22 +62,22 @@
 
                 this.$emit('changed', { tab: selectedTab });
 
-                this.activeTabHref = selectedTab.realHref
+                this.activeTabHref = selectedTab.realHref;
 
-                this.rememberChosenTab(selectedTab);
+                this.rememberSelectedTab(selectedTab);
             },
 
             findTab(href) {
                 return this.tabs.find(tab => tab.realHref === href);
             },
 
-            rememberChosenTab(tab) {
+            rememberSelectedTab(tab) {
                 const cache = {href: tab.realHref, expires: this.addMinutes(new Date(), this.cacheLifetime)}
 
                 localStorage.setItem(this.determineLocalStorageKey(), JSON.stringify(cache));
             },
 
-            retrieveChosenTab() {
+            retrieveSelectedTab() {
                 let cache = localStorage.getItem(this.determineLocalStorageKey());
 
                 if (! cache) {

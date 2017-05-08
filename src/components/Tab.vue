@@ -27,7 +27,7 @@
 
         created() {
             this.realHref = this.href
-                ? '#'+this.href
+                ? '#' + this.href
                 : '#' + this.name.toLowerCase().replace(/ /g, '-');
         },
 
