@@ -36,13 +36,18 @@ Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
 
 All postcards are published [on our website](https://spatie.be/opensource/postcards).
 
-## Install
+## Installation
 
 You can install the package via yarn:
 
 ```bash
-$ yarn add spatie-vue-tabs
+yarn add spatie-vue-tabs
 ```
+
+## Demo
+
+If you clone this package and run `yarn start` inside that directory you can see a demo at `http://localhost:2000`.
+
 
 ## Usage
 
@@ -81,7 +86,7 @@ If you click on a tab a `href` representation of the name will be append to the 
 
 When loading a page with a fragment that matches the `href` of a tab, it will open up that tab. For example visiting `/#third-tab` will open up the tab with name `Third tab`.
 
-## Remembering the last opened tab
+### Remembering the last opened tab
 
 By default the component will  remember which was the last open tab for 5 minutes . If you for instance click on `Third tab` and then visit `/` the third tab will be opened.
 
@@ -93,7 +98,7 @@ You can change the cache life time by passing the lifetime in minutes in the `ca
 </tabs>
 ```
 
-## Customizing fragments
+### Customizing fragments
 
 When clicking on a tab it's name will be used as a fragment in the url. For example clicking on the `Second tab` will append `#second-tab` to the current url. 
 
