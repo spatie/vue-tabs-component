@@ -3,6 +3,10 @@ import Tabs from '../src/components/Tabs.vue';
 import Vue from 'vue/dist/vue.js';
 import LocalStorageMock from './helpers/LocalStorageMock';
 
+const localStorage = new LocalStorageMock();
+
+window.localStorage = localStorage;
+
 describe('vue-tabs', () => {
     Vue.component('tabs', Tabs);
     Vue.component('tab', Tab);
@@ -24,34 +28,63 @@ describe('vue-tabs', () => {
             </div>
         `;
 
-        const localStorage = new LocalStorageMock();
-
-        window.localStorage = localStorage;
-
+        localStorage.clear();
     });
 
     it('can mount tabs', async () => {
-        createVm();
-
-        await Vue.nextTick(() => {});
+        await createVm();
 
         expect(document.body.innerHTML).toMatchSnapshot();
     });
 
     it('displays the first tab by default', async () => {
-        const vm = createVm();
+        const vm = await createVm();
 
-        await Vue.nextTick(() => {});
+        expect(vm.activeTabHref).toEqual('#first-tab');
+    });
 
-        const tabs = vm.$children[0];
+    it('uses the fragment of the url to determine which tab to open', async () => {
+        window.location.hash = '#second-tab';
 
-        expect(tabs.activeTabHref).toEqual('#first-tab');
+        const vm = await createVm();
+
+        expect(vm.activeTabHref).toEqual('#second-tab');
+    });
+
+    it('will ignore the fragment if it does not match the href of a tab', async () => {
+        window.location.hash = '#unknown-tab';
+
+        const vm = await createVm();
+
+        expect(vm.activeTabHref).toEqual('#first-tab');
+    });
+
+    it('remembers the tab that was opened previously', async () => {
+        window.location.hash = '#third-tab';
+
+        const vm = await createVm();
+
+        expect(vm.activeTabHref).toEqual('#third-tab');
+
+        window.location.hash = '';
+
+        /*
+        refresh js dom?
+        const vm2 = await createVm();
+
+        expect(vm2.activeTabHref).toEqual('#third-tab');
+
+        */
     });
 });
 
-function createVm()
+async function createVm()
 {
-    return new Vue({
+    const vm = new Vue({
         el: '#app',
     });
+
+    await Vue.nextTick(() => {});
+
+    return vm.$children[0];
 }

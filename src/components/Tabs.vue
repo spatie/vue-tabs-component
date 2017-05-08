@@ -23,6 +23,10 @@
             Tab
         },
 
+        props: {
+            cacheLifetime: { default: 5 },
+        },
+
         data() {
             return {
                 tabs: [],
@@ -63,7 +67,6 @@
                 });
 
                 this.$emit('changed', { tab: selectedTab });
-                console.log('changed to',  selectedTab.realHref);
 
                 this.activeTabHref = selectedTab.realHref
 
@@ -75,7 +78,7 @@
             },
 
             rememberChosenTab(tab) {
-                const cache = {href: tab.realHref, expires: this.addMinutes(new Date(), 5)}
+                const cache = {href: tab.realHref, expires: this.addMinutes(new Date(), this.cacheLifetime)}
 
                 localStorage.setItem(this.determineLocalStorageKey(), JSON.stringify(cache));
             },
@@ -100,11 +103,7 @@
 
             addMinutes(date, minutes) {
                 return new Date(date.getTime() + minutes * 60000);
-            }
+            },
         },
     };
-
-
-
-
 </script>

@@ -75,15 +75,23 @@ On your page you can now use html like this to render tabs:
 </div>
 ```
 
-
-
 By default is will show the first tab.
 
 If you click on a tab a `href` representation of the name will be append to the url. For example clicking on the tab `Second tab` will append `#second-tab` to the url.
 
 When loading a page with a fragment that matches the `href` of a tab, it will open up that tab. For example visiting `/#third-tab` will open up the tab with name `Third tab`.
 
-By default the component will also remember for 5 mintus which was the last open tab. If you for instance click on `Third tab` and then visit `/` the third tab will be opened
+## Remembering the last opened tab
+
+By default the component will  remember which was the last open tab for 5 minutes . If you for instance click on `Third tab` and then visit `/` the third tab will be opened.
+
+You can change the cache life time by passing the lifetime in minutes in the `cache-lifetime` property of the `tabs` component.
+
+```html
+<tabs cache-lifetime="10">
+  ...
+</tabs>
+```
 
 ### Customizing fragments
 
