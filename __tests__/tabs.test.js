@@ -45,7 +45,7 @@ describe('vue-tabs', () => {
 
         const tabs = vm.$children[0];
 
-        expect(tabs.activeTabHref).toEqual('first-tab');
+        expect(tabs.activeTabHref).toEqual('#first-tab');
     });
 });
 

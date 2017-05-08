@@ -43,7 +43,7 @@
                 return;
             }
 
-           const previousSelectedTab = this.findTab(localStorage.getItem(this.determineLocalStorageKey()));
+           const previousSelectedTab = this.retrieveChosenTab();
 
            if (previousSelectedTab) {
                 this.selectTab(previousSelectedTab);
@@ -64,16 +64,43 @@
 
                 this.$emit('changed', { tab: selectedTab });
                 console.log('changed to',  selectedTab.realHref);
-                localStorage.setItem(this.determineLocalStorageKey(),  selectedTab.realHref);
+
+                this.activeTabHref = selectedTab.realHref
+
+                this.rememberChosenTab(selectedTab);
             },
 
             findTab(href) {
                 return this.tabs.find(tab => tab.realHref === href);
             },
 
+            rememberChosenTab(tab) {
+                const cache = {href: tab.realHref, expires: this.addMinutes(new Date(), 5)}
+
+                localStorage.setItem(this.determineLocalStorageKey(), JSON.stringify(cache));
+            },
+
+            retrieveChosenTab() {
+                let cache = localStorage.getItem(this.determineLocalStorageKey());
+
+                if (! cache) {
+                    return;
+                }
+
+                cache = JSON.parse(cache);
+
+                const dateString = cache.expires;
+
+                return this.findTab(cache.href);
+            },
+
             determineLocalStorageKey() {
                 return `vue-tabs.cache.${window.location.host}${window.location.pathname}`;
             },
+
+            addMinutes(date, minutes) {
+                return new Date(date.getTime() + minutes * 60000);
+            }
         },
     };
 
