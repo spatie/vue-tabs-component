@@ -1,6 +1,6 @@
 let store = {};
 
-const localStorageMock = (function () {
+const localStorage = (function () {
 
     return {
         getItem(key) {
@@ -21,4 +21,4 @@ const localStorageMock = (function () {
     };
 });
 
-export default localStorageMock;
+export default localStorage;
