@@ -72,7 +72,7 @@
             },
 
             determineLocalStorageKey() {
-                return 'tabs.cacheKey';
+                return `vue-tabs.cache.${window.location.host}${window.location.pathname}`;
             },
         },
     };
