@@ -24,7 +24,7 @@
         },
 
         props: {
-            cacheLifetime: { default: 5 },
+            cacheLifetime: {default: 5},
         },
 
         data() {
@@ -39,15 +39,19 @@
         },
 
         mounted() {
-            if (const tabWithHash = this.findTab(window.location.hash)) {
+            const tabWithHash = this.findTab(window.location.hash);
+
+            if (tabWithHash) {
                 this.selectTab(tabWithHash);
                 return;
             }
 
-           if (const previousSelectedTab = this.retrieveSelectedTab()) {
+            const previousSelectedTab = this.retrieveSelectedTab();
+
+            if (previousSelectedTab) {
                 this.selectTab(previousSelectedTab);
                 return;
-           }
+            }
 
             if (this.tabs.length) {
                 this.selectTab(this.tabs[0]);
@@ -60,7 +64,7 @@
                     tab.isActive = (tab.realHref === selectedTab.realHref);
                 });
 
-                this.$emit('changed', { tab: selectedTab });
+                this.$emit('changed', {tab: selectedTab});
 
                 this.activeTabHref = selectedTab.realHref;
 
@@ -80,13 +84,19 @@
             retrieveSelectedTab() {
                 let cache = localStorage.getItem(this.determineLocalStorageKey());
 
-                if (! cache) {
+                if (!cache) {
                     return;
                 }
 
                 cache = JSON.parse(cache);
 
-                const dateString = cache.expires;
+                const expiryDate = new Date(cache.expires);
+
+                if (expiryDate < new Date()) {
+                    return;
+                }
+
+                console.log('used cache');
 
                 return this.findTab(cache.href);
             },

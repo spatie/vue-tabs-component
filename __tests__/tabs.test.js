@@ -11,6 +11,8 @@ describe('vue-tabs', () => {
     Vue.component('tabs', Tabs);
     Vue.component('tab', Tab);
 
+    window.location.hash = '';
+
     beforeEach(() => {
         document.body.innerHTML = `
             <div id="app">
@@ -29,6 +31,12 @@ describe('vue-tabs', () => {
         `;
 
         localStorage.clear();
+
+        const dateClass = Date;
+
+        Date = function(dateString) {
+            return new dateClass(dateString || '2017-01-01T00:00:00.000Z');
+        }
     });
 
     it('can mount tabs', async () => {
@@ -59,20 +67,36 @@ describe('vue-tabs', () => {
         expect(tabs.activeTabHref).toEqual('#first-tab');
     });
 
-    it('remembers the tab that was opened previously', async () => {
+    it('writes the href of the last opened tab in local storage', async () => {
         window.location.hash = '#third-tab';
 
-        let { app, tabs } = await createVm();
+        let { tabs } = await createVm();
 
-        //expect(vm.activeTabHref).toEqual('#third-tab');
+        expect(tabs.activeTabHref).toEqual('#third-tab');
 
-        window.location.hash = '';
+        expect(localStorage.getAll()).toMatchSnapshot();
+    });
 
-        app.$destroy();
+    it('opens up the tabname found in local storage', async () => {
+        localStorage.setItem('vue-tabs.cache.blank', JSON.stringify({
+            href: "#third-tab",
+            expires: subtractMinutes(new Date(), 1),
+        }));
 
-        vm = await createVm();
+        let { tabs } = await createVm();
 
-        expect(vm.activeTabHref).toEqual('#third-tab');
+        expect(tabs.activeTabHref).toEqual('#third-tab');
+    });
+
+    it('will not use the tab in local storage after the default lifetime of 5 minutes', async () => {
+        localStorage.setItem('vue-tabs.cache.blank', JSON.stringify({
+            href: "#third-tab",
+            expires: subtractMinutes(new Date(), 6),
+        }));
+
+        let { tabs } = await createVm();
+
+        expect(tabs.activeTabHref).toEqual('#first-tab');
     });
 });
 
@@ -85,4 +109,8 @@ async function createVm()
     await Vue.nextTick(() => {});
 
     return { app: vm, tabs: vm.$children[0] };
+}
+
+function subtractMinutes(date, minutes) {
+    return new Date(date.getTime() - (minutes * 60000));
 }

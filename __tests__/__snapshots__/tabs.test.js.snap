@@ -11,3 +11,9 @@ exports[`vue-tabs can mount tabs 1`] = `
                     </div></div></div></div>
         "
 `;
+
+exports[`vue-tabs writes the href of the last opened tab in local storage 1`] = `
+Object {
+  "vue-tabs.cache.blank": "{\\"href\\":\\"#third-tab\\",\\"expires\\":\\"2017-01-01T00:05:00.000Z\\"}",
+}
+`;

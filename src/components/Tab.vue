@@ -8,13 +8,15 @@
     export default {
         props: {
             name: { required: true },
+            namePrefix: { default: "" },
+            nameSuffix: { default: "" },
             selected: { default: false },
             href: { default: false },
         },
 
         computed: {
             header() {
-                return this.name;
+                return this.namePrefix + this.name + this.nameSuffix;
             },
         },
 

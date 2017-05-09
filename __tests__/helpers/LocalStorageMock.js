@@ -3,6 +3,10 @@ let store = {};
 const localStorage = (function () {
 
     return {
+        getAll() {
+            return store;
+        },
+
         getItem(key) {
             return store[key] || null;
         },
