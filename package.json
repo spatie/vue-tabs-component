@@ -1,5 +1,5 @@
 {
-  "name": "@spatie/vue-tabs",
+  "name": "vue-tabs-component",
   "version": "0.0.1",
   "description": "A Vue component to easily render tabs",
   "main": "dist/index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/spatie/vue-tabs.git"
+    "url": "https://github.com/spatie/vue-tabs-component.git"
   },
   "keywords": [
     "spatie"
@@ -21,9 +21,9 @@
   "author": "Freek Van der Herten",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/spatie/vue-tabs/issues"
+    "url": "https://github.com/spatie/vue-tabs-component/issues"
   },
-  "homepage": "https://github.com/spatie/vue-tabs",
+  "homepage": "https://github.com/spatie/vue-tabs-component",
   "peerDependencies": {
     "vue": "^2.0.3"
   },

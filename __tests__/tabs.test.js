@@ -7,11 +7,9 @@ const localStorage = new LocalStorageMock();
 
 window.localStorage = localStorage;
 
-describe('vue-tabs', () => {
+describe('vue-tabs-component', () => {
     Vue.component('tabs', Tabs);
     Vue.component('tab', Tab);
-
-    window.location.hash = '';
 
     beforeEach(() => {
         document.body.innerHTML = `
@@ -37,6 +35,8 @@ describe('vue-tabs', () => {
         Date = function(dateString) {
             return new dateClass(dateString || '2017-01-01T00:00:00.000Z');
         }
+
+        window.location.hash = '';
     });
 
     it('can mount tabs', async () => {
@@ -78,9 +78,9 @@ describe('vue-tabs', () => {
     });
 
     it('opens up the tabname found in local storage', async () => {
-        localStorage.setItem('vue-tabs.cache.blank', JSON.stringify({
+        localStorage.setItem('vue-tabs-component.cache.blank', JSON.stringify({
             href: "#third-tab",
-            expires: subtractMinutes(new Date(), 1),
+            expires: new Date(),
         }));
 
         let { tabs } = await createVm();
@@ -88,15 +88,47 @@ describe('vue-tabs', () => {
         expect(tabs.activeTabHref).toEqual('#third-tab');
     });
 
-    it('will not use the tab in local storage after the default lifetime of 5 minutes', async () => {
-        localStorage.setItem('vue-tabs.cache.blank', JSON.stringify({
+    it('will not use the tab in local storage if it has expired', async () => {
+        localStorage.setItem('vue-tabs-component.cache.blank', JSON.stringify({
             href: "#third-tab",
-            expires: subtractMinutes(new Date(), 6),
+            expires: subtractMinutes(new Date(), 1),
         }));
 
         let { tabs } = await createVm();
 
         expect(tabs.activeTabHref).toEqual('#first-tab');
+    });
+
+    it('the life time of the cache can be set', async () => {
+        document.body.innerHTML = `
+            <div id="app">
+                <tabs cache-lifetime="10">
+                    <tab name="First tab">
+                        First tab content
+                    </tab>
+                </tabs>
+            </div>
+        `;
+
+        let { tabs } = await createVm();
+
+        expect(localStorage.getAll()).toMatchSnapshot();
+    });
+
+    it('can accept a prefix and a suffix for the name', async () => {
+        document.body.innerHTML = `
+            <div id="app">
+                <tabs cache-lifetime="10">
+                    <tab name-prefix="prefix" name="First tab" name-suffix="suffix">
+                        First tab content
+                    </tab>
+                </tabs>
+            </div>
+        `;
+
+        let { tabs } = await createVm();
+
+        expect(document.body.innerHTML).toMatchSnapshot();
     });
 });
 

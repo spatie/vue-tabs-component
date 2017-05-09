@@ -2,9 +2,9 @@
 
 # A Vue component to easily render tabs
 
-[![Latest Version on NPM](https://img.shields.io/npm/v/vue-tabs.svg?style=flat-square)](https://npmjs.com/package/vue-tabs)
+[![Latest Version on NPM](https://img.shields.io/npm/v/vue-tabs-component.svg?style=flat-square)](https://npmjs.com/package/vue-tabs-component)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/spatie/vue-tabs/master.svg?style=flat-square)](https://travis-ci.org/spatie/vue-tabs)
+[![Build Status](https://img.shields.io/travis/spatie/vue-tabs-component/master.svg?style=flat-square)](https://travis-ci.org/spatie/vue-tabs-component)
 
 The package contains Vue components to easily display some tabs.
 
@@ -43,7 +43,7 @@ All postcards are published [on our website](https://spatie.be/opensource/postca
 You can install the package via yarn:
 
 ```bash
-yarn add spatie-vue-tabs
+yarn add spatie-vue-tabs-component
 ```
 
 ## Usage
@@ -53,7 +53,7 @@ The most common use case is to register the component globally
 ```js
 //in your app.js or similar file
 import Vue from 'vue';
-import {tabs, tab} from 'vue-tabs';
+import {tabs, tab} from 'vue-tabs-component';
 
 Vue.component('tabs', Tabs);
 Vue.component('tab', Tab);

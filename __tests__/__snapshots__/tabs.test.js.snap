@@ -1,6 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`vue-tabs can mount tabs 1`] = `
+exports[`vue-tabs-component can accept a prefix and a suffix for the name 1`] = `
+"
+            <div id=\\"app\\"><div><div class=\\"tabs\\"><ul><li class=\\"is-active\\"><a href=\\"#first-tab\\"><div>prefixFirst tabsuffix</div></a></li></ul></div> <div class=\\"tabs-details\\"><div style=\\"\\">
+                        First tab content
+                    </div></div></div></div>
+        "
+`;
+
+exports[`vue-tabs-component can mount tabs 1`] = `
 "
             <div id=\\"app\\"><div><div class=\\"tabs\\"><ul><li class=\\"is-active\\"><a href=\\"#first-tab\\"><div>First tab</div></a></li><li class=\\"\\"><a href=\\"#second-tab\\"><div>Second tab</div></a></li><li class=\\"\\"><a href=\\"#third-tab\\"><div>Third tab</div></a></li></ul></div> <div class=\\"tabs-details\\"><div style=\\"\\">
                         First tab content
@@ -12,8 +20,14 @@ exports[`vue-tabs can mount tabs 1`] = `
         "
 `;
 
-exports[`vue-tabs writes the href of the last opened tab in local storage 1`] = `
+exports[`vue-tabs-component the life time of the cache can be set 1`] = `
 Object {
-  "vue-tabs.cache.blank": "{\\"href\\":\\"#third-tab\\",\\"expires\\":\\"2017-01-01T00:05:00.000Z\\"}",
+  "vue-tabs-component.cache.blank": "{\\"href\\":\\"#first-tab\\",\\"expires\\":\\"2017-01-01T00:10:00.000Z\\"}",
+}
+`;
+
+exports[`vue-tabs-component writes the href of the last opened tab in local storage 1`] = `
+Object {
+  "vue-tabs-component.cache.blank": "{\\"href\\":\\"#third-tab\\",\\"expires\\":\\"2017-01-01T00:05:00.000Z\\"}",
 }
 `;

@@ -96,13 +96,11 @@
                     return;
                 }
 
-                console.log('used cache');
-
                 return this.findTab(cache.href);
             },
 
             determineLocalStorageKey() {
-                return `vue-tabs.cache.${window.location.host}${window.location.pathname}`;
+                return `vue-tabs-component.cache.${window.location.host}${window.location.pathname}`;
             },
 
             addMinutes(date, minutes) {
