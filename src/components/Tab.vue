@@ -10,6 +10,7 @@
             name: { required: true },
             namePrefix: { default: '' },
             nameSuffix: { default: '' },
+
             selected: { default: false },
             href: { default: false },
         },
@@ -31,10 +32,6 @@
             this.realHref = this.href
                 ? '#' + this.href
                 : '#' + this.name.toLowerCase().replace(/ /g, '-');
-        },
-
-        mounted() {
-            this.isActive = this.selected;
         },
     };
 </script>
