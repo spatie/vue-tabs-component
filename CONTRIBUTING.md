@@ -22,7 +22,7 @@ We accept contributions via Pull Requests on [Github](https://github.com/spatie/
 ## Running Tests
 
 ``` bash
-$ npm test
+jest
 ```
 
 **Happy coding**!
