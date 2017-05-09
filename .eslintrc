@@ -1,5 +1,8 @@
 {
-    "extends": "spatie",
+    "extends": "spatie/vue",
+    "parserOptions": {
+        "ecmaVersion": 8
+    },
     "env": {
         "browser": true,
         "node": true

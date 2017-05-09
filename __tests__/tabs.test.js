@@ -32,9 +32,10 @@ describe('vue-tabs-component', () => {
 
         const dateClass = Date;
 
-        Date = function(dateString) {
+        // eslint-disable-next-line no-global-assign
+        Date = function (dateString) {
             return new dateClass(dateString || '2017-01-01T00:00:00.000Z');
-        }
+        };
 
         window.location.hash = '';
     });
@@ -70,7 +71,7 @@ describe('vue-tabs-component', () => {
     it('writes the href of the last opened tab in local storage', async () => {
         window.location.hash = '#third-tab';
 
-        let { tabs } = await createVm();
+        const { tabs } = await createVm();
 
         expect(tabs.activeTabHref).toEqual('#third-tab');
 
@@ -79,22 +80,22 @@ describe('vue-tabs-component', () => {
 
     it('opens up the tabname found in local storage', async () => {
         localStorage.setItem('vue-tabs-component.cache.blank', JSON.stringify({
-            href: "#third-tab",
+            href: '#third-tab',
             expires: new Date(),
         }));
 
-        let { tabs } = await createVm();
+        const { tabs } = await createVm();
 
         expect(tabs.activeTabHref).toEqual('#third-tab');
     });
 
     it('will not use the tab in local storage if it has expired', async () => {
         localStorage.setItem('vue-tabs-component.cache.blank', JSON.stringify({
-            href: "#third-tab",
+            href: '#third-tab',
             expires: subtractMinutes(new Date(), 1),
         }));
 
-        let { tabs } = await createVm();
+        const { tabs } = await createVm();
 
         expect(tabs.activeTabHref).toEqual('#first-tab');
     });
@@ -110,7 +111,7 @@ describe('vue-tabs-component', () => {
             </div>
         `;
 
-        let { tabs } = await createVm();
+        await createVm();
 
         expect(localStorage.getAll()).toMatchSnapshot();
     });
@@ -126,14 +127,13 @@ describe('vue-tabs-component', () => {
             </div>
         `;
 
-        let { tabs } = await createVm();
+        await createVm();
 
         expect(document.body.innerHTML).toMatchSnapshot();
     });
 });
 
-async function createVm()
-{
+async function createVm() {
     const vm = new Vue({
         el: '#app',
     });

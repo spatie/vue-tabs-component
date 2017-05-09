@@ -20,11 +20,11 @@
 
     export default {
         components: {
-            Tab
+            Tab,
         },
 
         props: {
-            cacheLifetime: {default: 5},
+            cacheLifetime: { default: 5 },
         },
 
         data() {
@@ -64,7 +64,7 @@
                     tab.isActive = (tab.realHref === selectedTab.realHref);
                 });
 
-                this.$emit('changed', {tab: selectedTab});
+                this.$emit('changed', { tab: selectedTab });
 
                 this.activeTabHref = selectedTab.realHref;
 
@@ -76,7 +76,7 @@
             },
 
             rememberSelectedTab(tab) {
-                const cache = {href: tab.realHref, expires: this.addMinutes(new Date(), this.cacheLifetime)}
+                const cache = { href: tab.realHref, expires: this.addMinutes(new Date(), this.cacheLifetime) };
 
                 localStorage.setItem(this.determineLocalStorageKey(), JSON.stringify(cache));
             },

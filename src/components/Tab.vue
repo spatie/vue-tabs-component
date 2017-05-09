@@ -8,8 +8,8 @@
     export default {
         props: {
             name: { required: true },
-            namePrefix: { default: "" },
-            nameSuffix: { default: "" },
+            namePrefix: { default: '' },
+            nameSuffix: { default: '' },
             selected: { default: false },
             href: { default: false },
         },
