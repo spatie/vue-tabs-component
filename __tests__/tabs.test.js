@@ -38,43 +38,41 @@ describe('vue-tabs', () => {
     });
 
     it('displays the first tab by default', async () => {
-        const vm = await createVm();
+        const { tabs } = await createVm();
 
-        expect(vm.activeTabHref).toEqual('#first-tab');
+        expect(tabs.activeTabHref).toEqual('#first-tab');
     });
 
     it('uses the fragment of the url to determine which tab to open', async () => {
         window.location.hash = '#second-tab';
 
-        const vm = await createVm();
+        const { tabs } = await createVm();
 
-        expect(vm.activeTabHref).toEqual('#second-tab');
+        expect(tabs.activeTabHref).toEqual('#second-tab');
     });
 
     it('will ignore the fragment if it does not match the href of a tab', async () => {
         window.location.hash = '#unknown-tab';
 
-        const vm = await createVm();
+        const { tabs } = await createVm();
 
-        expect(vm.activeTabHref).toEqual('#first-tab');
+        expect(tabs.activeTabHref).toEqual('#first-tab');
     });
 
     it('remembers the tab that was opened previously', async () => {
         window.location.hash = '#third-tab';
 
-        const vm = await createVm();
+        let { app, tabs } = await createVm();
 
-        expect(vm.activeTabHref).toEqual('#third-tab');
+        //expect(vm.activeTabHref).toEqual('#third-tab');
 
         window.location.hash = '';
 
-        /*
-        refresh js dom?
-        const vm2 = await createVm();
+        app.$destroy();
 
-        expect(vm2.activeTabHref).toEqual('#third-tab');
+        vm = await createVm();
 
-        */
+        expect(vm.activeTabHref).toEqual('#third-tab');
     });
 });
 
@@ -86,5 +84,5 @@ async function createVm()
 
     await Vue.nextTick(() => {});
 
-    return vm.$children[0];
+    return { app: vm, tabs: vm.$children[0] };
 }
