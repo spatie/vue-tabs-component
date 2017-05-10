@@ -10110,6 +10110,11 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
         mounted: function mounted() {
             var _this = this;
 
+            window.addEventListener('hashchange', function () {
+                return _this.selectTab(window.location.hash);
+            });
+            console.log('mount');
+
             if (this.findTab(window.location.hash)) {
                 this.selectTab(window.location.hash);
                 return;
@@ -10125,9 +10130,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
             if (this.tabs.length) {
                 this.selectTab(this.tabs[0].hash);
             }
+            console.log(window);
 
             window.addEventListener('hashchange', function () {
-                return _this.selectTab(window.location.hash);
+                console.log('chacne', window.location.hash);_this.selectTab(window.location.hash);
             });
         },
 
@@ -10142,6 +10148,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 var selectedTab = this.findTab(selectedTabHash);
 
                 if (!selectedTab) {
+                    console.log('no tab for hash', selectedTabHash);
                     return;
                 }
 
@@ -10553,7 +10560,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       on: {
         "click": function($event) {
-          _vm.selectTab(tab)
+          _vm.selectTab(tab.hash)
         }
       }
     })])

@@ -10,7 +10,7 @@
                 <a v-html="tab.header"
                    :aria-controls="tab.hash"
                    :aria-selected="tab.isActive"
-                   @click="selectTab(tab)"
+                   @click="selectTab(tab.hash)"
                    :href="tab.hash"
                    class="tabs-component-tab-a"
                    role="tab"
@@ -48,6 +48,8 @@
         },
 
         mounted() {
+            window.addEventListener('hashchange', () => this.selectTab(window.location.hash));
+
             if (this.findTab(window.location.hash)) {
                 this.selectTab(window.location.hash);
                 return;
@@ -63,8 +65,6 @@
             if (this.tabs.length) {
                 this.selectTab(this.tabs[0].hash);
             }
-
-            window.addEventListener('hashchange', () => this.selectTab(window.location.hash));
         },
 
         methods: {
