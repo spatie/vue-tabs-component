@@ -1,6 +1,6 @@
 <template>
-    <div class="tabs-component">
-        <div class="tabs">
+    <div class="tabsComponent">
+        <div class="tabsComponent-tabs">
             <ul>
                 <li v-for="tab in tabs" :class="{ 'is-active': tab.isActive }">
                     <a :href="tab.hash" @click="selectTab(tab)">
@@ -9,7 +9,7 @@
                 </li>
             </ul>
         </div>
-        <div class="panels">
+        <div class="tabsComponent-panels">
             <slot></slot>
         </div>
     </div>
