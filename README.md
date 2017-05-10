@@ -97,13 +97,15 @@ You can change the cache life time by passing the lifetime in minutes in the `ca
 
 ### Adding a suffix and a prefix to the tab name
 
-You can add a suffix and a prefix to the tab by using the `name-suffix` and `name-prefix` attributes.
+You can add a suffix and a prefix to the tab by using the `suffix` and `prefix` attributes.
 
 ```html
-<tab name-suffix="my prefix" name="First tab" name-suffix="my suffix">
+<tab prefix="my prefix - " name="First tab" suffix=" - my suffix">
     First tab content
 </tab>
 ```
+
+The title of the tab will now be `myprefix - First tab - my suffix`.
 
 The fragment that's added to the url when click the tab will only be based on the `name` of a tab, the `name-prefix` and `name-suffix` attributes will be ignored.
 
