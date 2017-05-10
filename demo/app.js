@@ -1,9 +1,8 @@
 import Vue from 'vue';
-import Tabs from '../src/components/Tabs.vue';
-import Tab from '../src/components/Tab.vue';
+import { Tab, Tabs } from '../src';
 
 new Vue({
-    components: { Tabs, Tab },
+    components: { Tab, Tabs },
 
     el: '#app',
 });
