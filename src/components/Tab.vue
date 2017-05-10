@@ -7,12 +7,10 @@
 <script>
     export default {
         props: {
+            id: { default: null },
             name: { required: true },
             prefix: { default: '' },
             suffix: { default: '' },
-
-            selected: { default: false },
-            id: { default: null },
         },
 
         data: () => ({
