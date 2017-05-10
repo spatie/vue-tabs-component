@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/build/";
+/******/ 	__webpack_require__.p = "/resources/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 9);
@@ -10108,23 +10108,27 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
             this.tabs = this.$children;
         },
         mounted: function mounted() {
-            var tabWithHash = this.findTab(window.location.hash);
+            var _this = this;
 
-            if (tabWithHash) {
-                this.selectTab(tabWithHash);
+            if (this.findTab(window.location.hash)) {
+                this.selectTab(window.location.hash);
                 return;
             }
 
-            var previousSelectedTab = this.findTab(_expiringStorage2.default.get(this.storageKey));
+            var previousSelectedTabHash = _expiringStorage2.default.get(this.storageKey);
 
-            if (previousSelectedTab) {
-                this.selectTab(previousSelectedTab);
+            if (this.findTab(previousSelectedTabHash)) {
+                this.selectTab(previousSelectedTabHash);
                 return;
             }
 
             if (this.tabs.length) {
-                this.selectTab(this.tabs[0]);
+                this.selectTab(this.tabs[0].hash);
             }
+
+            window.addEventListener('hashchange', function () {
+                return _this.selectTab(window.location.hash);
+            });
         },
 
 
@@ -10134,7 +10138,13 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                     return tab.hash === hash;
                 });
             },
-            selectTab: function selectTab(selectedTab) {
+            selectTab: function selectTab(selectedTabHash) {
+                var selectedTab = this.findTab(selectedTabHash);
+
+                if (!selectedTab) {
+                    return;
+                }
+
                 this.tabs.forEach(function (tab) {
                     tab.isActive = tab.hash === selectedTab.hash;
                 });

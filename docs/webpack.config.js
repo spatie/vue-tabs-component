@@ -7,7 +7,7 @@ module.exports = merge(require('../webpack.base'), {
     entry: './app.js',
 
     output: {
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve(__dirname, 'resources'),
         filename: 'app.js',
         publicPath: '/resources/',
     },
