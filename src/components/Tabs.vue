@@ -1,7 +1,7 @@
 <template>
     <div class="tabs-component">
         <ul role="tablist" class="tabs-component-tabs">
-            <li v-for="tab in tabs" role="presentation" role="tab" class="tabsComponent-tab"
+            <li v-for="tab in tabs" role="presentation tab" class="tabsComponent-tab"
                 :aria-selected="tab.isActive" :tabindex="tab.isActive ? 0 : -1" :class="{ 'is-active': tab.isActive }">
                 <a role="tab" :aria-controls="tab.hash" :href="tab.hash" @click="selectTab(tab)">
                     <div v-html="tab.header"></div>
