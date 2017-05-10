@@ -1,23 +1,25 @@
 const path = require('path');
-const config = Object.assign({}, require('../webpack.base'));
+const merge = require('webpack-merge');
 
-config.context = __dirname;
+module.exports = merge(require('../webpack.base'), {
+    context: __dirname,
 
-config.entry = './app.js';
+    entry: './app.js',
 
-config.output = {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'app.js',
-    publicPath: '/build/',
-};
+    output: {
+        path: path.resolve(__dirname, 'build'),
+        filename: 'app.js',
+        publicPath: '/build/',
+    },
 
-config.resolve.alias = {
-    vue: 'vue/dist/vue.js',
-};
+    resolve: {
+        alias: {
+            vue: 'vue/dist/vue.js',
+        },
+    },
 
-config.devServer = {
-    contentBase: __dirname,
-    port: 2000,
-};
-
-module.exports = config;
+    devServer: {
+        contentBase: __dirname,
+        port: 2000,
+    },
+});
