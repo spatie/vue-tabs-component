@@ -1,7 +1,7 @@
 <template>
-    <div :id="id" v-show="isActive">
+    <section role="tabpanel" :aria-hidden="! isActive" :id="id" v-show="isActive">
         <slot />
-    </div>
+    </section>
 </template>
 
 <script>

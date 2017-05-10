@@ -1,17 +1,17 @@
 <template>
     <div class="tabsComponent">
         <nav class="tabsComponent-tabs">
-            <ul>
-                <li v-for="tab in tabs" class="tabsComponent-tab" :class="{ 'is-active': tab.isActive }">
-                    <a :href="tab.hash" @click="selectTab(tab)">
+            <ul role="tablist">
+                <li v-for="tab in tabs" role="presentation" class="tabsComponent-tab" :aria-selected="tab.isActive" :tabindex="tab.isActive ? 0 : -1" :class="{ 'is-active': tab.isActive }">
+                    <a role="tab" :aria-controls="tab.hash" :href="tab.hash" @click="selectTab(tab)">
                         <div v-html="tab.header"></div>
                     </a>
                 </li>
             </ul>
         </nav>
-        <section class="tabsComponent-panels">
+        <div class="tabsComponent-panels">
             <slot />
-        </section>
+        </div>
     </div>
 </template>
 
