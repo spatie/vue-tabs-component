@@ -16,13 +16,7 @@
 </template>
 
 <script>
-    import Tab from './Tab.vue';
-
     export default {
-        components: {
-            Tab,
-        },
-
         props: {
             cacheLifetime: { default: 5 },
         },
