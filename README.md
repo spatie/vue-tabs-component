@@ -21,7 +21,9 @@ This is how they can be used:
         <tab id="oh-hi-mark" name="Custom fragment">
             The fragment that is appended to the url can be customized
         </tab>
-        <tab prefix="<span class='glyphicon glyphicon-star'></span> " name="Prefix and suffix" suffix=" <span class='badge'>4</span>">
+        <tab prefix="<span class='glyphicon glyphicon-star'></span> " 
+             name="Prefix and suffix" 
+             suffix=" <span class='badge'>4</span>">
             A prefix and a suffix can be added
         </tab>
     </tabs>
