@@ -11,8 +11,7 @@
                 <a :href="tab.hash"
                    :aria-controls="tab.hash"
                    role="tab"
-                   @click="selectTab(tab)">
-                      <div v-html="tab.header"></div>
+                   @click="selectTab(tab)" v-html="tab.header">
                 </a>
 
             </li>
