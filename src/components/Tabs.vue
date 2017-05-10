@@ -13,7 +13,6 @@
                    @click="selectTab(tab)"
                    :href="tab.hash"
                    role="tab"
-                   :tabindex="tab.isActive ? 0 : -1"
                 ></a>
 
             </li>
