@@ -9,9 +9,9 @@
                 </li>
             </ul>
         </nav>
-        <div class="tabsComponent-panels">
+        <section class="tabsComponent-panels">
             <slot></slot>
-        </div>
+        </section>
     </div>
 </template>
 
