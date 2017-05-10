@@ -2,7 +2,7 @@
 
 exports[`vue-tabs-component can accept a prefix and a suffix for the name 1`] = `
 "
-            <div id=\\"app\\"><div class=\\"tabs-component\\"><ul role=\\"tablist\\" class=\\"tabs-component-tabs\\"><li role=\\"presentation\\" class=\\"tabsComponent-tab is-active\\"><a aria-controls=\\"#first-tab\\" aria-selected=\\"true\\" href=\\"#first-tab\\" role=\\"tab\\" tabindex=\\"0\\">prefixFirst tabsuffix</a></li></ul> <div class=\\"tabs-component-panels\\"><section role=\\"tabpanel\\" style=\\"\\">
+            <div id=\\"app\\"><div class=\\"tabs-component\\"><ul role=\\"tablist\\" class=\\"tabs-component-tabs\\"><li role=\\"presentation\\" class=\\"tabsComponent-tab is-active\\"><a aria-controls=\\"#first-tab\\" aria-selected=\\"true\\" href=\\"#first-tab\\" role=\\"tab\\" tabindex=\\"0\\">prefixFirst tabsuffix</a></li></ul> <div class=\\"tabs-component-panels\\"><section role=\\"tabpanel\\" class=\\"tabs-component-panel\\" style=\\"\\">
                         First tab content
                     </section></div></div></div>
         "
@@ -10,11 +10,11 @@ exports[`vue-tabs-component can accept a prefix and a suffix for the name 1`] = 
 
 exports[`vue-tabs-component can mount tabs 1`] = `
 "
-            <div id=\\"app\\"><div class=\\"tabs-component\\"><ul role=\\"tablist\\" class=\\"tabs-component-tabs\\"><li role=\\"presentation\\" class=\\"tabsComponent-tab is-active\\"><a aria-controls=\\"#first-tab\\" aria-selected=\\"true\\" href=\\"#first-tab\\" role=\\"tab\\" tabindex=\\"0\\">First tab</a></li><li role=\\"presentation\\" class=\\"tabsComponent-tab\\"><a aria-controls=\\"#second-tab\\" href=\\"#second-tab\\" role=\\"tab\\" tabindex=\\"-1\\">Second tab</a></li><li role=\\"presentation\\" class=\\"tabsComponent-tab\\"><a aria-controls=\\"#third-tab\\" href=\\"#third-tab\\" role=\\"tab\\" tabindex=\\"-1\\">Third tab</a></li></ul> <div class=\\"tabs-component-panels\\"><section role=\\"tabpanel\\" style=\\"\\">
+            <div id=\\"app\\"><div class=\\"tabs-component\\"><ul role=\\"tablist\\" class=\\"tabs-component-tabs\\"><li role=\\"presentation\\" class=\\"tabsComponent-tab is-active\\"><a aria-controls=\\"#first-tab\\" aria-selected=\\"true\\" href=\\"#first-tab\\" role=\\"tab\\" tabindex=\\"0\\">First tab</a></li><li role=\\"presentation\\" class=\\"tabsComponent-tab\\"><a aria-controls=\\"#second-tab\\" href=\\"#second-tab\\" role=\\"tab\\" tabindex=\\"-1\\">Second tab</a></li><li role=\\"presentation\\" class=\\"tabsComponent-tab\\"><a aria-controls=\\"#third-tab\\" href=\\"#third-tab\\" role=\\"tab\\" tabindex=\\"-1\\">Third tab</a></li></ul> <div class=\\"tabs-component-panels\\"><section role=\\"tabpanel\\" class=\\"tabs-component-panel\\" style=\\"\\">
                         First tab content
-                    </section> <section role=\\"tabpanel\\" aria-hidden=\\"true\\" style=\\"display: none;\\">
+                    </section> <section aria-hidden=\\"true\\" role=\\"tabpanel\\" class=\\"tabs-component-panel\\" style=\\"display: none;\\">
                         Second tab content
-                    </section> <section role=\\"tabpanel\\" aria-hidden=\\"true\\" style=\\"display: none;\\">
+                    </section> <section aria-hidden=\\"true\\" role=\\"tabpanel\\" class=\\"tabs-component-panel\\" style=\\"display: none;\\">
                         Third tab content
                     </section></div></div></div>
         "
