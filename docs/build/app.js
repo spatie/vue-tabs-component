@@ -10523,7 +10523,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, _vm._l((_vm.tabs), function(tab) {
     return _c('li', {
-      staticClass: "tabsComponent-tab",
+      staticClass: "tabs-component-tab",
       class: {
         'is-active': tab.isActive
       },
@@ -10566,7 +10566,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "tabs-component-panel",
     attrs: {
       "aria-hidden": !_vm.isActive,
-      "id": _vm.id,
+      "id": _vm.hash,
       "role": "tabpanel"
     }
   }, [_vm._t("default")], 2)
