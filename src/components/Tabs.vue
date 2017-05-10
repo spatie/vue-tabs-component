@@ -8,8 +8,11 @@
                 :tabindex="tab.isActive ? 0 : -1"
                 :class="{ 'is-active': tab.isActive }">
 
-                <a role="tab" :aria-controls="tab.hash" :href="tab.hash" @click="selectTab(tab)">
-                    <div v-html="tab.header"></div>
+                <a :href="tab.hash"
+                   :aria-controls="tab.hash"
+                   role="tab"
+                   @click="selectTab(tab)">
+                      <div v-html="tab.header"></div>
                 </a>
 
             </li>
