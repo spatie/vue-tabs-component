@@ -1,5 +1,5 @@
 <template>
-    <div :id="id" v-show="isActive">
+    <div :id="id" v-show="isActive" class="tabsComponent-panel">
         <slot></slot>
     </div>
 </template>
