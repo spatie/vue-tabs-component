@@ -12,6 +12,7 @@
                    :aria-selected="tab.isActive"
                    @click="selectTab(tab)"
                    :href="tab.hash"
+                   class="tabs-component-tab-a"
                    role="tab"
                 ></a>
 
