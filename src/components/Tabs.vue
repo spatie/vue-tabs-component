@@ -3,7 +3,7 @@
         <ul role="tablist" class="tabs-component-tabs">
             <li v-for="tab in tabs"
                 :class="{ 'is-active': tab.isActive }"
-                class="tabsComponent-tab"
+                class="tabs-component-tab"
                 role="presentation"
             >
 
