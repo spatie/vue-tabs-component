@@ -10567,7 +10567,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "tabs-component-panel",
     attrs: {
       "aria-hidden": !_vm.isActive,
-      "id": _vm.id,
+      "id": _vm.hash,
       "role": "tabpanel"
     }
   }, [_vm._t("default")], 2)
