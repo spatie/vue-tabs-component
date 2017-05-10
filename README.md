@@ -33,7 +33,7 @@ The rendered output adheres to
 
 ## Demo
 
-You can see a demo here: https://spatie.github.io/vue-tabs-component
+You can see a demo here: http://vue-tabs-component.spatie.be
 
 ## Postcardware
 
