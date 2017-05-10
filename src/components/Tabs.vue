@@ -2,7 +2,7 @@
     <div class="tabsComponent">
         <div class="tabsComponent-tabs">
             <ul>
-                <li v-for="tab in tabs" :class="{ 'is-active': tab.isActive }">
+                <li v-for="tab in tabs" class="tabsComponent-tab" :class="{ 'is-active': tab.isActive }">
                     <a :href="tab.hash" @click="selectTab(tab)">
                         <div v-html="tab.header"></div>
                     </a>
