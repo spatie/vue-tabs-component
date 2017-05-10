@@ -54,6 +54,12 @@ You can install the package via yarn:
 yarn add vue-tabs-component
 ```
 
+or npm:
+
+```php
+npm install vue-tabs-component --save
+```
+
 ## Usage
 
 The most common use case is to register the component globally
