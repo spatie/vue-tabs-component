@@ -2,21 +2,21 @@
 
 exports[`vue-tabs-component can accept a prefix and a suffix for the name 1`] = `
 "
-            <div id=\\"app\\"><div class=\\"tabsComponent\\"><div class=\\"tabsComponent-tabs\\"><ul><li class=\\"tabsComponent-tab is-active\\"><a href=\\"#first-tab\\"><div>prefixFirst tabsuffix</div></a></li></ul></div> <div class=\\"tabsComponent-panels\\"><div style=\\"\\">
+            <div id=\\"app\\"><div class=\\"tabsComponent\\"><nav class=\\"tabsComponent-tabs\\"><ul><li class=\\"tabsComponent-tab is-active\\"><a href=\\"#first-tab\\"><div>prefixFirst tabsuffix</div></a></li></ul></nav> <section class=\\"tabsComponent-panels\\"><div style=\\"\\">
                         First tab content
-                    </div></div></div></div>
+                    </div></section></div></div>
         "
 `;
 
 exports[`vue-tabs-component can mount tabs 1`] = `
 "
-            <div id=\\"app\\"><div class=\\"tabsComponent\\"><div class=\\"tabsComponent-tabs\\"><ul><li class=\\"tabsComponent-tab is-active\\"><a href=\\"#first-tab\\"><div>First tab</div></a></li><li class=\\"tabsComponent-tab\\"><a href=\\"#second-tab\\"><div>Second tab</div></a></li><li class=\\"tabsComponent-tab\\"><a href=\\"#third-tab\\"><div>Third tab</div></a></li></ul></div> <div class=\\"tabsComponent-panels\\"><div style=\\"\\">
+            <div id=\\"app\\"><div class=\\"tabsComponent\\"><nav class=\\"tabsComponent-tabs\\"><ul><li class=\\"tabsComponent-tab is-active\\"><a href=\\"#first-tab\\"><div>First tab</div></a></li><li class=\\"tabsComponent-tab\\"><a href=\\"#second-tab\\"><div>Second tab</div></a></li><li class=\\"tabsComponent-tab\\"><a href=\\"#third-tab\\"><div>Third tab</div></a></li></ul></nav> <section class=\\"tabsComponent-panels\\"><div style=\\"\\">
                         First tab content
                     </div> <div style=\\"display: none;\\">
                         Second tab content
                     </div> <div style=\\"display: none;\\">
                         Third tab content
-                    </div></div></div></div>
+                    </div></section></div></div>
         "
 `;
 

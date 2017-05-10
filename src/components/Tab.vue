@@ -1,6 +1,6 @@
 <template>
     <div :id="id" v-show="isActive">
-        <slot></slot>
+        <slot />
     </div>
 </template>
 

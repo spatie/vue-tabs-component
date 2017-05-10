@@ -10,7 +10,7 @@
             </ul>
         </nav>
         <section class="tabsComponent-panels">
-            <slot></slot>
+            <slot />
         </section>
     </div>
 </template>
