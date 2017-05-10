@@ -153,7 +153,7 @@ If you discover any security related issues, please contact [Freek Van der Herte
 ## Credits
 
 - [Freek Van der Herten](https://github.com/freekmurze)
-- [Willem Van Bockstal](https://github.com/boxtalk)
+- [Willem Van Bockstal](https://github.com/willemvb)
 - [Sebastian De Deyne](https://github.com/sebastiandedeyne)
 - [All Contributors](../../contributors)
 
