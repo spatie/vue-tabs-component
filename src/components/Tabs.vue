@@ -5,7 +5,7 @@
                 :aria-selected="tab.isActive"
                 :class="{ 'is-active': tab.isActive }"
                 class="tabsComponent-tab"
-                role="presentation tab"
+                role="presentation"
                 :tabindex="tab.isActive ? 0 : -1"
             >
 
