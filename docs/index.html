@@ -52,6 +52,7 @@
         .page-outro {
             color: #999;
             display: block;
+            margin-top: 4em;
             text-align: center;
         }
 
@@ -117,6 +118,19 @@
             A prefix and a suffix can be added — HTML allowed.
         </tab>
     </tabs>
+
+    <div>
+        The tab component above is powered by [spatie/vue-tabs-component](https://github.com/spatie/vue-tabs-component).
+
+        The component will use the fragment of the url to choose which tab to open. So if you navigate to
+        [http://vue-tabs-component.spatie.be/#second-tab](http://vue-tabs-component.spatie.be/#second-tab) the contents
+        of tab named `Second tab` will be displayed.
+
+        The component will also [remember which tab was opened
+        previously](https://github.com/spatie/vue-tabs-component#remembering-the-last-opened-tab). So if you click
+        `Second tab` and than navigate to [http://vue-tabs-component.spatie.be](http://vue-tabs-component.spatie.be) the
+        second will be displayed.
+    </div>
 
     <small class="page-outro">
         <a class="page-outro-a" href="https://github.com/spatie/vue-tabs-component">Vue-tabs-component</a> on Github |
