@@ -1,5 +1,3 @@
-**COMPONENT IN DEVELOPMENT: DO NOT USE YET**
-
 # A Vue component to easily render tabs
 
 [![Latest Version on NPM](https://img.shields.io/npm/v/vue-tabs-component.svg?style=flat-square)](https://npmjs.com/package/vue-tabs-component)
