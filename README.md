@@ -31,7 +31,7 @@ When reloading the page the component will automatically [display the tab that w
 
 ## Demo
 
-If you clone this package, run `yarn` to pull in the dependencies and run `yarn start` inside that directory you can see a demo at `http://localhost:2000`.
+You can see a demo here: https://spatie.github.io/vue-tabs-component
 
 ## Postcardware
 
