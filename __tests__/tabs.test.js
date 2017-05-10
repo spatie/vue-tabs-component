@@ -1,5 +1,4 @@
-import Tab from '../src/components/Tab.vue';
-import Tabs from '../src/components/Tabs.vue';
+import { Tab, Tabs } from '../src';
 import Vue from 'vue/dist/vue.js';
 import LocalStorageMock from './helpers/LocalStorageMock';
 

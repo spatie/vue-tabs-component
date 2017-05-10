@@ -1,4 +1,2 @@
-import Tabs from './components/Tabs.vue';
-import Tab from './components/Tab.vue';
-
-export default { Tabs, Tab };
+export { default as Tabs } from './components/Tabs';
+export { default as Tab } from './components/Tab';
