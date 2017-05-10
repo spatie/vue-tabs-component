@@ -51,6 +51,22 @@ describe('vue-tabs-component', () => {
         expect(tabs.activeTabHash).toEqual('#first-tab');
     });
 
+    it('uses a custom fragment', async () => {
+        document.body.innerHTML = `
+            <div id="app">
+                <tabs cache-lifetime="10">
+                    <tab name="First tab" prefix="prefix" suffix="suffix" id="my-fragment">
+                        First tab content
+                    </tab>
+                </tabs>
+            </div>
+        `;
+
+        const { tabs } = await createVm();
+
+        expect(tabs.activeTabHash).toEqual('#my-fragment');
+    });
+
     it('uses the fragment of the url to determine which tab to open', async () => {
         window.location.hash = '#second-tab';
 
@@ -59,7 +75,7 @@ describe('vue-tabs-component', () => {
         expect(tabs.activeTabHash).toEqual('#second-tab');
     });
 
-    it('will ignore the fragment if it does not match the hash of a tab', async () => {
+    it('ignores the fragment if it does not match the hash of a tab', async () => {
         window.location.hash = '#unknown-tab';
 
         const { tabs } = await createVm();
@@ -120,22 +136,6 @@ describe('vue-tabs-component', () => {
             <div id="app">
                 <tabs cache-lifetime="10">
                     <tab name="First tab" prefix="prefix" suffix="suffix">
-                        First tab content
-                    </tab>
-                </tabs>
-            </div>
-        `;
-
-        await createVm();
-
-        expect(document.body.innerHTML).toMatchSnapshot();
-    });
-
-    it('can use a custom fragment', async () => {
-        document.body.innerHTML = `
-            <div id="app">
-                <tabs cache-lifetime="10">
-                    <tab name="First tab" prefix="prefix" suffix="suffix" fragment="my-fragment">
                         First tab content
                     </tab>
                 </tabs>

@@ -113,19 +113,19 @@ The fragment that's added to the url when click the tab will only be based on th
 
 When clicking on a tab it's name will be used as a fragment in the url. For example clicking on the `Second tab` will append `#second-tab` to the current url. 
 
-You can customize that fragment by using the `href` attribute.
+You can customize that fragment by using the `id` attribute.
 
 ```html
 <div>
     <tabs>
-        <tab name="My tab" href="custom-href">
+        <tab id="custom-fragment" name="My tab">
             First tab content
         </tab>
     </tabs>
 </div>
 ```
 
-Clicking on `My tab` will then append `#custom-href` to the url.
+Clicking on `My tab` will then append `#custom-fragment` to the url.
 
 ## Change log
 

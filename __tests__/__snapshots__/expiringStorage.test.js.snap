@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expiringStorage sets keys in the local storage 1`] = `
+Object {
+  "my-key": "{\\"value\\":\\"my-value\\",\\"expires\\":\\"2017-01-01T00:05:00.000Z\\"}",
+}
+`;
