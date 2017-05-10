@@ -48,7 +48,7 @@ describe('vue-tabs-component', () => {
     it('displays the first tab by default', async () => {
         const { tabs } = await createVm();
 
-        expect(tabs.activeTabHref).toEqual('#first-tab');
+        expect(tabs.activeTabHash).toEqual('#first-tab');
     });
 
     it('uses the fragment of the url to determine which tab to open', async () => {
@@ -56,47 +56,47 @@ describe('vue-tabs-component', () => {
 
         const { tabs } = await createVm();
 
-        expect(tabs.activeTabHref).toEqual('#second-tab');
+        expect(tabs.activeTabHash).toEqual('#second-tab');
     });
 
-    it('will ignore the fragment if it does not match the href of a tab', async () => {
+    it('will ignore the fragment if it does not match the hash of a tab', async () => {
         window.location.hash = '#unknown-tab';
 
         const { tabs } = await createVm();
 
-        expect(tabs.activeTabHref).toEqual('#first-tab');
+        expect(tabs.activeTabHash).toEqual('#first-tab');
     });
 
-    it('writes the href of the last opened tab in local storage', async () => {
+    it('writes the hash of the last opened tab in local storage', async () => {
         window.location.hash = '#third-tab';
 
         const { tabs } = await createVm();
 
-        expect(tabs.activeTabHref).toEqual('#third-tab');
+        expect(tabs.activeTabHash).toEqual('#third-tab');
 
         expect(localStorage.getAll()).toMatchSnapshot();
     });
 
     it('opens up the tabname found in local storage', async () => {
         localStorage.setItem('vue-tabs-component.cache.blank', JSON.stringify({
-            href: '#third-tab',
+            hash: '#third-tab',
             expires: new Date(),
         }));
 
         const { tabs } = await createVm();
 
-        expect(tabs.activeTabHref).toEqual('#third-tab');
+        expect(tabs.activeTabHash).toEqual('#third-tab');
     });
 
     it('will not use the tab in local storage if it has expired', async () => {
         localStorage.setItem('vue-tabs-component.cache.blank', JSON.stringify({
-            href: '#third-tab',
+            hash: '#third-tab',
             expires: subtractMinutes(new Date(), 1),
         }));
 
         const { tabs } = await createVm();
 
-        expect(tabs.activeTabHref).toEqual('#first-tab');
+        expect(tabs.activeTabHash).toEqual('#first-tab');
     });
 
     it('the life time of the cache can be set', async () => {

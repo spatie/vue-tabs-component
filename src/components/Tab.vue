@@ -1,5 +1,5 @@
 <template>
-    <div v-show="isActive">
+    <div :id="id" v-show="isActive">
         <slot></slot>
     </div>
 </template>
@@ -12,26 +12,25 @@
             suffix: { default: '' },
 
             selected: { default: false },
-            href: { default: false },
+            id: { default: null },
         },
 
         computed: {
             header() {
                 return this.prefix + this.name + this.suffix;
             },
+
+            hash() {
+                return this.id ?
+                    '#' + this.id :
+                    '#' + this.name.toLowerCase().replace(/ /g, '-');
+            },
         },
 
         data() {
             return {
                 isActive: false,
-                realHref: false,
             };
-        },
-
-        created() {
-            this.realHref = this.href
-                ? '#' + this.href
-                : '#' + this.name.toLowerCase().replace(/ /g, '-');
         },
     };
 </script>
