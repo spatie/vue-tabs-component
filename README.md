@@ -29,7 +29,7 @@ This is how they can be used:
 
 When reloading the page the component will automatically [display the tab that was previously opened](https://github.com/spatie/vue-tabs-component#remembering-the-last-opened-tab).
 
-The rendered output adheres to 
+The rendered output adheres to [the ARIA specification](http://heydonworks.com/practical_aria_examples/#tab-interface).
 
 ## Demo
 
