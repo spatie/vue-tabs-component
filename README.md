@@ -14,17 +14,22 @@ This is how they can be used:
 <div>
     <tabs>
         <tab name="First tab">
-            First tab content
+            This is the content of the first tab
         </tab>
         <tab name="Second tab">
-            Second tab content
+            This is the content of the second tab
         </tab>
-        <tab name="Third tab">
-            Third tab content
+        <tab id="oh-hi-mark" name="Custom fragment">
+            The fragment that is appended to the url can be customized
+        </tab>
+        <tab prefix="<span class='glyphicon glyphicon-star'></span> " name="Prefix and suffix" suffix=" <span class='badge'>4</span>">
+            A prefix and a suffix can be added
         </tab>
     </tabs>
 </div>
 ```
+
+When reloading the page the component will automatically [display the tab that was previously opened](https://github.com/spatie/vue-tabs-component#remembering-the-last-opened-tab).
 
 ## Demo
 
