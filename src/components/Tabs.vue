@@ -27,11 +27,15 @@
             cacheLifetime: { default: 5 },
         },
 
-        data() {
-            return {
-                tabs: [],
-                activeTabHash: '',
-            };
+        data: () => ({
+            tabs: [],
+            activeTabHash: '',
+        }),
+
+        computed: {
+            localStorageKey() {
+                return `vue-tabs-component.cache.${window.location.host}${window.location.pathname}`;
+            },
         },
 
         created() {
@@ -78,13 +82,13 @@
             rememberSelectedTab(tab) {
                 const cache = { hash: tab.hash, expires: this.addMinutes(new Date(), this.cacheLifetime) };
 
-                localStorage.setItem(this.determineLocalStorageKey(), JSON.stringify(cache));
+                localStorage.setItem(this.localStorageKey, JSON.stringify(cache));
             },
 
             retrieveSelectedTab() {
-                let cache = localStorage.getItem(this.determineLocalStorageKey());
+                let cache = localStorage.getItem(this.localStorageKey);
 
-                if (!cache) {
+                if (! cache) {
                     return;
                 }
 
@@ -97,10 +101,6 @@
                 }
 
                 return this.findTab(cache.hash);
-            },
-
-            determineLocalStorageKey() {
-                return `vue-tabs-component.cache.${window.location.host}${window.location.pathname}`;
             },
 
             addMinutes(date, minutes) {
