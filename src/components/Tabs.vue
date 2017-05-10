@@ -48,25 +48,23 @@
         },
 
         mounted() {
-            const tabWithHash = this.findTab(window.location.hash);
-
-            if (tabWithHash) {
-                this.selectTab(tabWithHash);
+            if (this.findTab(window.location.hash)) {
+                this.selectTab(window.location.hash);
                 return;
             }
 
-            const previousSelectedTab = this.findTab(expiringStorage.get(this.storageKey));
+            const previousSelectedTabHash = expiringStorage.get(this.storageKey);
 
-            if (previousSelectedTab) {
-                this.selectTab(previousSelectedTab);
+            if (this.findTab(previousSelectedTabHash)) {
+                this.selectTab(previousSelectedTabHash);
                 return;
             }
 
             if (this.tabs.length) {
-                this.selectTab(this.tabs[0]);
+                this.selectTab(this.tabs[0].hash);
             }
 
-            window.addEventListener("hashchange", () => this.selectedTab(window.location.hash));
+            window.addEventListener('hashchange', () => this.selectTab(window.location.hash));
         },
 
         methods: {
@@ -74,7 +72,13 @@
                 return this.tabs.find(tab => tab.hash === hash);
             },
 
-            selectTab(selectedTab) {
+            selectTab(selectedTabHash) {
+                const selectedTab = this.findTab(selectedTabHash);
+
+                if (! selectedTab) {
+                    return;
+                }
+
                 this.tabs.forEach(tab => {
                     tab.isActive = (tab.hash === selectedTab.hash);
                 });
