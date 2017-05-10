@@ -153,6 +153,8 @@ If you discover any security related issues, please contact [Freek Van der Herte
 ## Credits
 
 - [Freek Van der Herten](https://github.com/freekmurze)
+- [Willem Van Bockstal](https://github.com/boxtalk)
+- [Sebastian De Deyne](https://github.com/sebastiandedeyne)
 - [All Contributors](../../contributors)
 
 This package is based on the solution presented by [Jeffrey Way](https://twitter.com/jeffrey_way) in the [practical example #3](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/11) video in the [Vue series](https://vuecasts.com) on [Laracasts](https://laracasts.com)
