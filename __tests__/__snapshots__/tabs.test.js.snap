@@ -22,12 +22,12 @@ exports[`vue-tabs-component can mount tabs 1`] = `
 
 exports[`vue-tabs-component the life time of the cache can be set 1`] = `
 Object {
-  "vue-tabs-component.cache.blank": "{\\"href\\":\\"#first-tab\\",\\"expires\\":\\"2017-01-01T00:10:00.000Z\\"}",
+  "vue-tabs-component.cache.blank": "{\\"hash\\":\\"#first-tab\\",\\"expires\\":\\"2017-01-01T00:10:00.000Z\\"}",
 }
 `;
 
-exports[`vue-tabs-component writes the href of the last opened tab in local storage 1`] = `
+exports[`vue-tabs-component writes the hash of the last opened tab in local storage 1`] = `
 Object {
-  "vue-tabs-component.cache.blank": "{\\"href\\":\\"#third-tab\\",\\"expires\\":\\"2017-01-01T00:05:00.000Z\\"}",
+  "vue-tabs-component.cache.blank": "{\\"hash\\":\\"#third-tab\\",\\"expires\\":\\"2017-01-01T00:05:00.000Z\\"}",
 }
 `;

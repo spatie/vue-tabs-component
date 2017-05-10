@@ -6,7 +6,7 @@
   "jsnext:main": "src/index.js",
   "scripts": {
     "start": "webpack-dev-server --config demo/webpack.config.js",
-    "build": "rm -rf dist && NODE_ENV=production webpack --config webpack.dist.js",
+    "build": "rm -rf dist && NODE_ENV=production webpack",
     "lint": "eslint --ext .js,.vue --fix src __tests__; exit 0",
     "prepublish": "npm run test; npm run build",
     "test": "jest"
@@ -25,22 +25,25 @@
   },
   "homepage": "https://github.com/spatie/vue-tabs-component",
   "peerDependencies": {
-    "vue": "^2.0.3"
+    "vue": "^2.3.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.9.0",
+    "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.16.0",
     "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.4.0",
+    "css-loader": "^0.28.1",
     "eslint": "^3.7.1",
     "eslint-config-spatie": "^1.1.0",
     "jest": "^19.0.0",
     "jest-vue-preprocessor": "^0.2.0",
-    "vue": "^2.0.3",
+    "vue": "^2.3.0",
     "vue-loader": "^12.0.3",
     "vue-template-compiler": "^2.3.2",
     "webpack": "^2.3.3",
-    "webpack-dev-server": "^2.4.2"
+    "webpack-dev-server": "^2.4.2",
+    "webpack-merge": "^4.1.0"
   },
   "jest": {
     "testRegex": "test.js$",
@@ -52,9 +55,5 @@
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
       ".*\\.(vue)$": "<rootDir>/node_modules/jest-vue-preprocessor"
     }
-  },
-  "dependencies": {
-    "babel-plugin-transform-async-to-generator": "^6.24.1",
-    "babel-preset-env": "^1.4.0"
   }
 }

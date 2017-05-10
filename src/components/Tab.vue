@@ -1,5 +1,5 @@
 <template>
-    <div v-show="isActive">
+    <div :id="id" v-show="isActive">
         <slot></slot>
     </div>
 </template>
@@ -8,30 +8,27 @@
     export default {
         props: {
             name: { required: true },
-            namePrefix: { default: '' },
-            nameSuffix: { default: '' },
+            prefix: { default: '' },
+            suffix: { default: '' },
 
             selected: { default: false },
-            href: { default: false },
+            id: { default: null },
         },
+
+        data: () => ({
+            isActive: false,
+        }),
 
         computed: {
             header() {
-                return this.namePrefix + this.name + this.nameSuffix;
+                return this.prefix + this.name + this.suffix;
             },
-        },
 
-        data() {
-            return {
-                isActive: false,
-                realHref: false,
-            };
-        },
-
-        created() {
-            this.realHref = this.href
-                ? '#' + this.href
-                : '#' + this.name.toLowerCase().replace(/ /g, '-');
+            hash() {
+                return this.id ?
+                    '#' + this.id :
+                    '#' + this.name.toLowerCase().replace(/ /g, '-');
+            },
         },
     };
 </script>
