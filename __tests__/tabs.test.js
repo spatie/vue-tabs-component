@@ -119,7 +119,7 @@ describe('vue-tabs-component', () => {
         document.body.innerHTML = `
             <div id="app">
                 <tabs cache-lifetime="10">
-                    <tab name-prefix="prefix" name="First tab" name-suffix="suffix">
+                    <tab name="First tab" prefix="prefix" suffix="suffix">
                         First tab content
                     </tab>
                 </tabs>
