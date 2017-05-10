@@ -15,6 +15,10 @@
             id: { default: null },
         },
 
+        data: () => ({
+            isActive: false,
+        }),
+
         computed: {
             header() {
                 return this.prefix + this.name + this.suffix;
@@ -25,12 +29,6 @@
                     '#' + this.id :
                     '#' + this.name.toLowerCase().replace(/ /g, '-');
             },
-        },
-
-        data() {
-            return {
-                isActive: false,
-            };
         },
     };
 </script>
