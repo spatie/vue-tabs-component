@@ -130,6 +130,22 @@ describe('vue-tabs-component', () => {
 
         expect(document.body.innerHTML).toMatchSnapshot();
     });
+
+    it('can use a custom fragment', async () => {
+        document.body.innerHTML = `
+            <div id="app">
+                <tabs cache-lifetime="10">
+                    <tab name="First tab" prefix="prefix" suffix="suffix" fragment="my-fragment">
+                        First tab content
+                    </tab>
+                </tabs>
+            </div>
+        `;
+
+        await createVm();
+
+        expect(document.body.innerHTML).toMatchSnapshot();
+    });
 });
 
 async function createVm() {

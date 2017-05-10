@@ -12,7 +12,7 @@ class ExpiringStorage {
         const expiryDate = new Date(cache.expires);
 
         if (expiryDate < new Date()) {
-            return;
+            return null;
         }
 
         return cache.value;
