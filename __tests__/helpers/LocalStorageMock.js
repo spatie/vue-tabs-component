@@ -1,28 +1,25 @@
-let store = {};
+export default class LocalStorageMock {
+    constructor() {
+        this.store = {};
+    }
 
-const localStorage = (function () {
+    getAll() {
+        return this.store;
+    }
 
-    return {
-        getAll() {
-            return store;
-        },
+    getItem(key) {
+        return this.store[key] || null;
+    }
 
-        getItem(key) {
-            return store[key] || null;
-        },
+    setItem(key, value) {
+        this.store[key] = value.toString();
+    }
 
-        setItem(key, value) {
-            store[key] = value.toString();
-        },
+    clear() {
+        this.store = {};
+    }
 
-        clear() {
-            store = {};
-        },
-
-        removeItem(key) {
-            delete store[key];
-        },
-    };
-});
-
-export default localStorage;
+    removeItem(key) {
+        delete this.store[key];
+    }
+}
