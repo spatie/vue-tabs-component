@@ -2,18 +2,18 @@
     <div class="tabs-component">
         <ul role="tablist" class="tabs-component-tabs">
             <li v-for="tab in tabs"
-                :aria-selected="tab.isActive"
                 :class="{ 'is-active': tab.isActive }"
                 class="tabsComponent-tab"
                 role="presentation"
-                :tabindex="tab.isActive ? 0 : -1"
             >
 
                 <a v-html="tab.header"
                    :aria-controls="tab.hash"
+                   :aria-selected="tab.isActive"
                    @click="selectTab(tab)"
                    :href="tab.hash"
                    role="tab"
+                   :tabindex="tab.isActive ? 0 : -1"
                 ></a>
 
             </li>
