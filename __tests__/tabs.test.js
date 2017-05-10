@@ -79,7 +79,7 @@ describe('vue-tabs-component', () => {
 
     it('opens up the tabname found in local storage', async () => {
         localStorage.setItem('vue-tabs-component.cache.blank', JSON.stringify({
-            hash: '#third-tab',
+            value: '#third-tab',
             expires: new Date(),
         }));
 

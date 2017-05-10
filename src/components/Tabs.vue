@@ -16,6 +16,8 @@
 </template>
 
 <script>
+    import expiringStorage from '../expiringStorage';
+
     export default {
         props: {
             cacheLifetime: { default: 5 },
@@ -27,7 +29,7 @@
         }),
 
         computed: {
-            localStorageKey() {
+            storageKey() {
                 return `vue-tabs-component.cache.${window.location.host}${window.location.pathname}`;
             },
         },
@@ -44,7 +46,7 @@
                 return;
             }
 
-            const previousSelectedTab = this.retrieveSelectedTab();
+            const previousSelectedTab = this.findTab(expiringStorage.get(this.storageKey));
 
             if (previousSelectedTab) {
                 this.selectTab(previousSelectedTab);
@@ -57,6 +59,10 @@
         },
 
         methods: {
+            findTab(hash) {
+                return this.tabs.find(tab => tab.hash === hash);
+            },
+
             selectTab(selectedTab) {
                 this.tabs.forEach(tab => {
                     tab.isActive = (tab.hash === selectedTab.hash);
@@ -66,39 +72,7 @@
 
                 this.activeTabHash = selectedTab.hash;
 
-                this.rememberSelectedTab(selectedTab);
-            },
-
-            findTab(hash) {
-                return this.tabs.find(tab => tab.hash === hash);
-            },
-
-            rememberSelectedTab(tab) {
-                const cache = { hash: tab.hash, expires: this.addMinutes(new Date(), this.cacheLifetime) };
-
-                localStorage.setItem(this.localStorageKey, JSON.stringify(cache));
-            },
-
-            retrieveSelectedTab() {
-                let cache = localStorage.getItem(this.localStorageKey);
-
-                if (! cache) {
-                    return;
-                }
-
-                cache = JSON.parse(cache);
-
-                const expiryDate = new Date(cache.expires);
-
-                if (expiryDate < new Date()) {
-                    return;
-                }
-
-                return this.findTab(cache.hash);
-            },
-
-            addMinutes(date, minutes) {
-                return new Date(date.getTime() + minutes * 60000);
+                expiringStorage.set(this.storageKey, selectedTab.hash, this.cacheLifetime);
             },
         },
     };
