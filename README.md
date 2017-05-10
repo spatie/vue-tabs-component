@@ -3,6 +3,7 @@
 [![Latest Version on NPM](https://img.shields.io/npm/v/vue-tabs-component.svg?style=flat-square)](https://npmjs.com/package/vue-tabs-component)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://img.shields.io/travis/spatie/vue-tabs-component/master.svg?style=flat-square)](https://travis-ci.org/spatie/vue-tabs-component)
+[![npm](https://img.shields.io/npm/dt/vue-tabs-component.svg)](https://img.shields.io/npm/dt/vue-tabs-component.svg)
 
 The package contains a [Vue](https://vuejs.org/) component to easily display some tabs.
 
