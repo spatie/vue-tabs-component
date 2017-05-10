@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "jsnext:main": "src/index.js",
   "scripts": {
-    "start": "webpack-dev-server --config demo/webpack.config.js",
+    "start": "webpack-dev-server --config docs/webpack.config.js",
     "build": "rm -rf dist && NODE_ENV=production webpack",
     "lint": "eslint --ext .js,.vue --fix src __tests__; exit 0",
     "prepublish": "npm run test; npm run build",
