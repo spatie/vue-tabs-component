@@ -110,7 +110,7 @@ You can add a suffix and a prefix to the tab by using the `suffix` and `prefix` 
 
 The title of the tab will now be `myprefix - First tab - my suffix`.
 
-The fragment that's added to the url when click the tab will only be based on the `name` of a tab, the `name-prefix` and `name-suffix` attributes will be ignored.
+The fragment that's added to the url when clicking the tab will only be based on the `name` of a tab, the `name-prefix` and `name-suffix` attributes will be ignored.
 
 ### Customizing fragments
 
