@@ -20,7 +20,7 @@
             background-color: #efefef;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
             font-size: 16px;
-            padding: 2em;
+            padding: 1em;
         }
 
         .page {
@@ -43,10 +43,53 @@
             margin-bottom: 1em;
         }
 
-        .panel-title {
+        .page-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page-title a:hover {
+            color: #007593;
+        }
+
+        .page-subtitle {
             font-size: 1.25rem;
             margin-bottom: 1em;
             padding-top: .25em;
+        }
+
+        .page-about {
+            background-color: #d1e8eb;
+            margin: 0 -2em;
+            padding: 2em 1em;
+        }
+
+        @media (min-width: 700px) {
+            .page-about {
+                border-radius: 3px;
+                margin: 0;
+                padding: 2em;
+            }
+        }
+
+        .page-about h2 {
+            color: #003345;
+        }
+
+        .page-about p {
+            color: #003345;
+            line-height: 1.45;
+            margin-bottom: 1em;
+        }
+
+        .page-about a {
+            color: #007593;
+        }
+
+        .page-about code {
+            background-color: rgba(255, 255, 255, .75);
+            border-radius: 3px;
+            padding: 0 .25em;
         }
 
         .page-outro {
@@ -56,7 +99,7 @@
             text-align: center;
         }
 
-        .page-outro-a {
+        .page-outro a {
             color: #999;
         }
 
@@ -99,40 +142,47 @@
 </head>
 <body>
 <article id="app" class="page">
-    <h1 class="page-title"><a href="https://github.com/spatie/vue-tabs-component">Vue-tabs-component</a></h1>
+    <h1 class="page-title">
+        <a href="https://github.com/spatie/vue-tabs-component">Vue-tabs-component</a>
+    </h1>
     <tabs>
         <tab name="First tab">
-            <h2 class="panel-title">First tab</h2>
-            This is the content of the first tab
+            <h2 class="page-subtitle">First tab</h2>
+            This is the content of the first tab.
         </tab>
         <tab name="Second tab">
-            <h2 class="panel-title">Second tab</h2>
-            This is the content of the second tab
+            <h2 class="page-subtitle">Second tab</h2>
+            This is the content of the second tab.
         </tab>
         <tab id="oh-hi-mark" name="Custom fragment">
-            <h2 class="panel-title">Custom fragment</h2>
-            The hash that is appended to the url can be customized
+            <h2 class="page-subtitle">Custom fragment</h2>
+            The hash that is appended to the url can be customized.
         </tab>
         <tab prefix="<span class='prefix'>→</span>" name="Prefix and suffix" suffix="<span class='suffix'>4</span>">
-            <h2 class="panel-title">Prefix and suffix</h2>
+            <h2 class="page-subtitle">Prefix and suffix</h2>
             A prefix and a suffix can be added — HTML allowed.
         </tab>
     </tabs>
 
-    <div>
-        <p>The tab component above is powered by <a href="https://github.com/spatie/vue-tabs-component">spatie/vue-tabs-component</a>.</p>
+    <section class="page-about">
+        <h2 class="page-subtitle">About</h2>
+        <p>
+            The tab component above is powered by <a href="https://github.com/spatie/vue-tabs-component">spatie/vue-tabs-component</a>.
+        </p>
 
-        <p>The component will use the fragment of the url to choose which tab to open. So if you navigate to
-            <a href="http://vue-tabs-component.spatie.be/#second-tab">http://vue-tabs-component.spatie.be/#second-tab</a> the contents
-            of tab named <code>Second tab</code> will be displayed.</p>
+        <p>The component will use the <strong>fragment</strong> of the url to choose which tab to open. If you navigate to
+            <a href="http://vue-tabs-component.spatie.be/#second-tab">http://vue-tabs-component.spatie.be/#second-tab</a>
+            the contents of tab named <code>Second tab</code> will be displayed.</p>
 
-        <p>The component will also <a href="https://github.com/spatie/vue-tabs-component#remembering-the-last-opened-tab">remember which tab was opened
-            previously</a>. So if you navigate to <a href="http://vue-tabs-component.spatie.be">http://vue-tabs-component.spatie.be</a> the tabs that is active now will be displayed.</p>
-    </div>
+        <p>The component will also <strong>remember</strong>
+            which tab was opened previously. If you <a href="http://vue-tabs-component.spatie.be">reload without fragment</a>
+            the tab that is currently active will receive focus again. More about this feature <a href="https://github.com/spatie/vue-tabs-component#remembering-the-last-opened-tab">on Github</a>.
+        </p>
+    </section>
 
     <small class="page-outro">
-        <a class="page-outro-a" href="https://github.com/spatie/vue-tabs-component">Vue-tabs-component</a> on Github |
-        Proudly presented by <a class="page-outro-a" href="https://spatie.be">spatie.be</a>
+        <a href="https://github.com/spatie/vue-tabs-component">Code on Github</a> |
+        Proudly presented by <a href="https://spatie.be">spatie.be</a>
     </small>
 </article>
 <script src="resources/app.js"></script>
