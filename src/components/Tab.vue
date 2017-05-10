@@ -2,7 +2,7 @@
     <section v-show="isActive"
              :aria-hidden="! isActive"
              class="tabs-component-panel"
-             :id="id"
+             :id="hash"
              role="tabpanel"
     >
         <slot />
