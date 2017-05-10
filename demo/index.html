@@ -1,14 +1,38 @@
 <html>
 <head>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous">
+    <title>vue-tabs-component</title>
+
+    <style>
+
+        *,
+        *:after,
+        *:before {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #efefef;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            font-size: 16px;
+            padding: 2em;
+        }
+
+        .page {
+            background-color: #fff;
+            max-width: 66em;
+            margin: 0 auto;
+            padding: 4em 2em;
+        }
+
+    </style>
+
 </head>
 <body>
-<div id="app">
+<div id="app" class="page">
     <div class="container mt-4">
-        <h1>Tabs demo</h1>
+        <h1>Vue-tabs-component</h1>
         <tabs>
             <tab name="First tab">
                 This is the content of the first tab
