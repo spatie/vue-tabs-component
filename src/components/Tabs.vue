@@ -65,6 +65,8 @@
             if (this.tabs.length) {
                 this.selectTab(this.tabs[0]);
             }
+
+            window.addEventListener("hashchange", () => this.selectedTab(window.location.hash));
         },
 
         methods: {
