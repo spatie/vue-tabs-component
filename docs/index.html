@@ -4,12 +4,15 @@
 
     <style>
 
+        /* Page styles */
+
         *,
         *:after,
         *:before {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            position: relative;
         }
 
         body {
@@ -21,18 +24,61 @@
 
         .page {
             background-color: #fff;
-            max-width: 66em;
+            border-radius: 3px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, .025);
             margin: 0 auto;
-            padding: 4em 2em;
+            max-width: 66em;
+            padding: 4em;
+        }
+
+        .page-title {
+            font-size: 36px;
+            margin-bottom: 1em;
+        }
+
+        .page-outro{
+            color: #999;
+            display: block;
+            padding-top: 8em;
+        }
+
+        .page-outro-a{
+            color: #999;
+        }
+
+        /* Tabs styles */
+
+        .tabs-component {
+            margin: 2em 0;
+        }
+
+        .tabs-component-tabs {
+            align-items: stretch;
+            border-bottom: solid 1px #ddd;
+            display: flex;
+            justify-content: flex-start;
+            list-style: none;
+        }
+
+        .tabs-component-tab {
+            align-items: center;
+            border: solid 1px #ddd;
+            border-bottom-color: #fff;
+            border-radius: 3px 3px 0 0;
+            display: flex;
+            margin-bottom: -1px;
+        }
+
+        .tabs-component-tab.is-active {
+            font-weight: bold;
         }
 
     </style>
 
 </head>
 <body>
-<div id="app" class="page">
-    <div class="container mt-4">
-        <h1>Vue-tabs-component</h1>
+    <article id="app" class="page">
+        <h1 class="page-title">Vue-tabs-component</h1>
         <tabs>
             <tab name="First tab">
                 This is the content of the first tab
@@ -47,8 +93,12 @@
                 A prefix and a suffix can be added
             </tab>
         </tabs>
-    </div>
-</div>
-<script src="build/app.js"></script>
+
+        <small class="page-outro">
+            <a class="page-outro-a" href="https://github.com/spatie/vue-tabs-component">Vue-tabs-component</a>  on Github | Made by <a class="page-outro-a" href="https://spatie.be">spatie.be</a>
+        </small>
+    </article>
+    <script src="build/app.js"></script>
+
 </body>
 </html>
