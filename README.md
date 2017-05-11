@@ -148,7 +148,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 ## Testing
 
 ``` bash
-$ yarn run test
+$ yarn test
 ```
 
 ## Contributing
