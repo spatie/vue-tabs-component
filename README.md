@@ -67,7 +67,7 @@ The most common use case is to register the component globally
 ```js
 //in your app.js or similar file
 import Vue from 'vue';
-import {tabs, tab} from 'vue-tabs-component';
+import {Tabs, Tab} from 'vue-tabs-component';
 
 Vue.component('tabs', Tabs);
 Vue.component('tab', Tab);
