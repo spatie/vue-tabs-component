@@ -62,7 +62,7 @@ npm install vue-tabs-component --save
 
 ## Usage
 
-The most common use case is to register the component globally
+The most common use case is to register the component globally.
 
 ```js
 //in your app.js or similar file
@@ -91,7 +91,7 @@ On your page you can now use html like this to render tabs:
 </div>
 ```
 
-By default is will show the first tab.
+By default it will show the first tab.
 
 If you click on a tab a `href` representation of the name will be append to the url. For example clicking on the tab `Second tab` will append `#second-tab` to the url.
 
