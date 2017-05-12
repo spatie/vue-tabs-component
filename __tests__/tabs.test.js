@@ -131,12 +131,30 @@ describe('vue-tabs-component', () => {
         expect(localStorage.getAll()).toMatchSnapshot();
     });
 
-    it('can accept a prefix and a suffix for the name', async () => {
+    it('can accept a prefix and a suffix for the name through props', async () => {
         document.body.innerHTML = `
             <div id="app">
                 <tabs cache-lifetime="10">
                     <tab name="First tab" prefix="prefix" suffix="suffix">
                         First tab content
+                    </tab>
+                </tabs>
+            </div>
+        `;
+
+        await createVm();
+
+        expect(document.body.innerHTML).toMatchSnapshot();
+    });
+
+    it('can accept a prefix and a suffix for the name through slots', async () => {
+        document.body.innerHTML = `
+            <div id="app">
+                <tabs cache-lifetime="10">
+                    <tab name="First tab">
+                        <span slot="prefix">prefix</span>
+                        First tab content
+                        <span slot="suffix">suffix</span>
                     </tab>
                 </tabs>
             </div>

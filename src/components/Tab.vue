@@ -1,9 +1,10 @@
 <template>
-    <section v-show="isActive"
-             :aria-hidden="! isActive"
-             class="tabs-component-panel"
-             :id="hash"
-             role="tabpanel"
+    <section
+        v-show="isActive"
+        :aria-hidden="! isActive"
+        class="tabs-component-panel"
+        :id="hash"
+        role="tabpanel"
     >
         <slot />
     </section>
@@ -23,8 +24,12 @@
         }),
 
         computed: {
-            header() {
-                return this.prefix + this.name + this.suffix;
+            prefixNode() {
+                return this.$slots.prefix || this.prefix || null;
+            },
+
+            suffixNode() {
+                return this.$slots.suffix || this.suffix || null;
             },
 
             hash() {

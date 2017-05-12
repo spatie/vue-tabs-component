@@ -1,21 +1,28 @@
 <template>
     <div class="tabs-component">
         <ul role="tablist" class="tabs-component-tabs">
-            <li v-for="tab in tabs"
+            <li
+                v-for="tab in tabs"
                 :class="{ 'is-active': tab.isActive }"
                 class="tabs-component-tab"
                 role="presentation"
             >
-
-                <a v-html="tab.header"
+                <a
                    :aria-controls="tab.hash"
                    :aria-selected="tab.isActive"
                    @click="selectTab(tab.hash)"
                    :href="tab.hash"
                    class="tabs-component-tab-a"
                    role="tab"
-                ></a>
-
+                >
+                    <virtual-node
+                        :contents="tab.prefixNode"
+                    ></virtual-node>
+                    {{ tab.name }}
+                    <virtual-node
+                        :contents="tab.suffixNode"
+                    ></virtual-node>
+                </a>
             </li>
         </ul>
         <div class="tabs-component-panels">
@@ -26,8 +33,13 @@
 
 <script>
     import expiringStorage from '../expiringStorage';
+    import VirtualNode from './VirtualNode';
 
     export default {
+        components: {
+            VirtualNode,
+        },
+
         props: {
             cacheLifetime: { default: 5 },
         },
