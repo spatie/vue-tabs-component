@@ -55,7 +55,7 @@ describe('vue-tabs-component', () => {
         document.body.innerHTML = `
             <div id="app">
                 <tabs cache-lifetime="10">
-                    <tab name="First tab" prefix="prefix" suffix="suffix" id="my-fragment">
+                    <tab id="my-fragment" name="First tab" >
                         First tab content
                     </tab>
                 </tabs>
