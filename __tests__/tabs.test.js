@@ -153,7 +153,7 @@ async function createVm() {
         el: '#app',
     });
 
-    await Vue.nextTick(() => {});
+    await Vue.nextTick();
 
     return { app: vm, tabs: vm.$children[0] };
 }
