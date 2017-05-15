@@ -72,7 +72,7 @@ describe('vue-tabs-component', () => {
 
         const tabs = await createVm();
 
-        expect(tabs.activeTabHash).toEqual('#second-tab');
+        expect(document.body.innerHTML).toMatchSnapshot();
     });
 
     it('ignores the fragment if it does not match the hash of a tab', async () => {
