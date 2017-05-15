@@ -46,7 +46,7 @@ describe('vue-tabs-component', () => {
     });
 
     it('displays the first tab by default', async () => {
-        const { tabs } = await createVm();
+        const tabs = await createVm();
 
         expect(tabs.activeTabHash).toEqual('#first-tab');
     });
@@ -62,7 +62,7 @@ describe('vue-tabs-component', () => {
             </div>
         `;
 
-        const { tabs } = await createVm();
+        const tabs = await createVm();
 
         expect(tabs.activeTabHash).toEqual('#my-fragment');
     });
@@ -70,7 +70,7 @@ describe('vue-tabs-component', () => {
     it('uses the fragment of the url to determine which tab to open', async () => {
         window.location.hash = '#second-tab';
 
-        const { tabs } = await createVm();
+        const tabs = await createVm();
 
         expect(tabs.activeTabHash).toEqual('#second-tab');
     });
@@ -78,7 +78,7 @@ describe('vue-tabs-component', () => {
     it('ignores the fragment if it does not match the hash of a tab', async () => {
         window.location.hash = '#unknown-tab';
 
-        const { tabs } = await createVm();
+        const tabs = await createVm();
 
         expect(tabs.activeTabHash).toEqual('#first-tab');
     });
@@ -86,7 +86,7 @@ describe('vue-tabs-component', () => {
     it('writes the hash of the last opened tab in local storage', async () => {
         window.location.hash = '#third-tab';
 
-        const { tabs } = await createVm();
+        const tabs = await createVm();
 
         expect(tabs.activeTabHash).toEqual('#third-tab');
 
@@ -99,7 +99,7 @@ describe('vue-tabs-component', () => {
             expires: new Date(),
         }));
 
-        const { tabs } = await createVm();
+        const tabs = await createVm();
 
         expect(tabs.activeTabHash).toEqual('#third-tab');
     });
@@ -110,7 +110,7 @@ describe('vue-tabs-component', () => {
             expires: subtractMinutes(new Date(), 1),
         }));
 
-        const { tabs } = await createVm();
+        const tabs = await createVm();
 
         expect(tabs.activeTabHash).toEqual('#first-tab');
     });
@@ -155,7 +155,7 @@ async function createVm() {
 
     await Vue.nextTick();
 
-    return { app: vm, tabs: vm.$children[0] };
+    return vm.$children[0];
 }
 
 function subtractMinutes(date, minutes) {
