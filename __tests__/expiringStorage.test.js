@@ -51,10 +51,10 @@ function progressTime(minutes) {
 
     const newTime = new Date(currentTime + (minutes * 60000));
 
-    const dateClass = Date;
+    const originalDateClass = Date;
 
     // eslint-disable-next-line no-global-assign
     Date = function (dateString) {
-        return new dateClass(dateString || newTime.toISOString());
+        return new originalDateClass(dateString || newTime.toISOString());
     };
 }
