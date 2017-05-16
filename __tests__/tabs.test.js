@@ -94,7 +94,7 @@ describe('vue-tabs-component', () => {
         expect(localStorage.getAll()).toMatchSnapshot();
     });
 
-    it('opens up the tabname found in local storage', async () => {
+    it('opens up the tabname found in storage', async () => {
         expiringStorage.set('vue-tabs-component.cache.blank', '#third-tab', 5);
 
         const tabs = await createVm();
@@ -102,11 +102,10 @@ describe('vue-tabs-component', () => {
         expect(tabs.activeTabHash).toEqual('#third-tab');
     });
 
-    it('will not use the tab in local storage if it has expired', async () => {
-        localStorage.setItem('vue-tabs-component.cache.blank', JSON.stringify({
-            hash: '#third-tab',
-            expires: subtractMinutes(new Date(), 1),
-        }));
+    it('will not use the tab in storage if it has expired', async () => {
+        expiringStorage.set('vue-tabs-component.cache.blank', '#third-tab', 5);
+
+        progressTime(6);
 
         const tabs = await createVm();
 
@@ -156,6 +155,15 @@ async function createVm() {
     return vm.$children[0];
 }
 
-function subtractMinutes(date, minutes) {
-    return new Date(date.getTime() - (minutes * 60000));
+function progressTime(minutes) {
+    const currentTime = (new Date()).getTime();
+
+    const newTime = new Date(currentTime + (minutes * 60000));
+
+    const originalDateClass = Date;
+
+    // eslint-disable-next-line no-global-assign
+    Date = function (dateString) {
+        return new originalDateClass(dateString || newTime.toISOString());
+    };
 }
