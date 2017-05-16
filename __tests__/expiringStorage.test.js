@@ -23,13 +23,13 @@ describe('expiringStorage', () => {
         expect(localStorage.getAll()).toMatchSnapshot();
     });
 
-    it('remembers values by key', async () => {
+    it('remembers values by key', () => {
         expiringStorage.set('my-key', 'my-value', 5);
 
         expect(expiringStorage.get('my-key')).toEqual('my-value');
     });
 
-    it('returns null if the value has expired ', async () => {
+    it('returns null if the value has expired ', () => {
         expiringStorage.set('my-key', 'my-value', 5);
 
         progressTime(5);
@@ -41,7 +41,7 @@ describe('expiringStorage', () => {
         expect(expiringStorage.get('my-key')).toBeNull();
     });
 
-    it('returns null for unknown keys', async () => {
+    it('returns null for unknown keys', () => {
         expect(expiringStorage.get('unknown-key')).toBeNull();
     });
 });
