@@ -1,5 +1,6 @@
 import { Tab, Tabs } from '../src';
 import Vue from 'vue/dist/vue.js';
+import expiringStorage from '../src/expiringStorage';
 import LocalStorageMock from './helpers/LocalStorageMock';
 
 const localStorage = new LocalStorageMock();
@@ -94,10 +95,7 @@ describe('vue-tabs-component', () => {
     });
 
     it('opens up the tabname found in local storage', async () => {
-        localStorage.setItem('vue-tabs-component.cache.blank', JSON.stringify({
-            value: '#third-tab',
-            expires: new Date(),
-        }));
+        expiringStorage.set('vue-tabs-component.cache.blank', '#third-tab', 5);
 
         const tabs = await createVm();
 
