@@ -62,15 +62,22 @@ npm install vue-tabs-component --save
 
 ## Usage
 
-The most common use case is to register the component globally.
+The easiest way is to auto register the components globally:
 
 ```js
-//in your app.js or similar file
+// in your app.js or similar file
+import 'vue-tabs-component/auto';
+```
+
+If you want to register the components under different names, you can instead import and register them yourself:
+
+```js
+// in your app.js or similar file
 import Vue from 'vue';
 import {Tabs, Tab} from 'vue-tabs-component';
 
-Vue.component('tabs', Tabs);
-Vue.component('tab', Tab);
+Vue.component('my-tabs', Tabs);
+Vue.component('my-tab', Tab);
 ```
 
 On your page you can now use html like this to render tabs: 
