@@ -73,6 +73,14 @@ Vue.component('tabs', Tabs);
 Vue.component('tab', Tab);
 ```
 
+Alternatively you can do this to register the components:
+
+```js
+import Tabs from 'vue-tabs-component';
+
+Vue.use(Tabs);
+```
+
 On your page you can now use html like this to render tabs: 
 
 ```html
