@@ -1,5 +1,6 @@
 import { Tab, Tabs } from '../src';
 import Vue from 'vue/dist/vue.js';
+import expiringStorage from '../src/expiringStorage';
 import LocalStorageMock from './helpers/LocalStorageMock';
 
 const localStorage = new LocalStorageMock();
@@ -46,7 +47,7 @@ describe('vue-tabs-component', () => {
     });
 
     it('displays the first tab by default', async () => {
-        const { tabs } = await createVm();
+        const tabs = await createVm();
 
         expect(tabs.activeTabHash).toEqual('#first-tab');
     });
@@ -55,14 +56,14 @@ describe('vue-tabs-component', () => {
         document.body.innerHTML = `
             <div id="app">
                 <tabs cache-lifetime="10">
-                    <tab name="First tab" prefix="prefix" suffix="suffix" id="my-fragment">
+                    <tab id="my-fragment" name="First tab" >
                         First tab content
                     </tab>
                 </tabs>
             </div>
         `;
 
-        const { tabs } = await createVm();
+        const tabs = await createVm();
 
         expect(tabs.activeTabHash).toEqual('#my-fragment');
     });
@@ -70,15 +71,15 @@ describe('vue-tabs-component', () => {
     it('uses the fragment of the url to determine which tab to open', async () => {
         window.location.hash = '#second-tab';
 
-        const { tabs } = await createVm();
+        const tabs = await createVm();
 
-        expect(tabs.activeTabHash).toEqual('#second-tab');
+        expect(document.body.innerHTML).toMatchSnapshot();
     });
 
     it('ignores the fragment if it does not match the hash of a tab', async () => {
         window.location.hash = '#unknown-tab';
 
-        const { tabs } = await createVm();
+        const tabs = await createVm();
 
         expect(tabs.activeTabHash).toEqual('#first-tab');
     });
@@ -86,31 +87,27 @@ describe('vue-tabs-component', () => {
     it('writes the hash of the last opened tab in local storage', async () => {
         window.location.hash = '#third-tab';
 
-        const { tabs } = await createVm();
+        const tabs = await createVm();
 
         expect(tabs.activeTabHash).toEqual('#third-tab');
 
         expect(localStorage.getAll()).toMatchSnapshot();
     });
 
-    it('opens up the tabname found in local storage', async () => {
-        localStorage.setItem('vue-tabs-component.cache.blank', JSON.stringify({
-            value: '#third-tab',
-            expires: new Date(),
-        }));
+    it('opens up the tabname found in storage', async () => {
+        expiringStorage.set('vue-tabs-component.cache.blank', '#third-tab', 5);
 
-        const { tabs } = await createVm();
+        const tabs = await createVm();
 
         expect(tabs.activeTabHash).toEqual('#third-tab');
     });
 
-    it('will not use the tab in local storage if it has expired', async () => {
-        localStorage.setItem('vue-tabs-component.cache.blank', JSON.stringify({
-            hash: '#third-tab',
-            expires: subtractMinutes(new Date(), 1),
-        }));
+    it('will not use the tab in storage if it has expired', async () => {
+        expiringStorage.set('vue-tabs-component.cache.blank', '#third-tab', 5);
 
-        const { tabs } = await createVm();
+        progressTime(6);
+
+        const tabs = await createVm();
 
         expect(tabs.activeTabHash).toEqual('#first-tab');
     });
@@ -155,9 +152,18 @@ async function createVm() {
 
     await Vue.nextTick();
 
-    return { app: vm, tabs: vm.$children[0] };
+    return vm.$children[0];
 }
 
-function subtractMinutes(date, minutes) {
-    return new Date(date.getTime() - (minutes * 60000));
+function progressTime(minutes) {
+    const currentTime = (new Date()).getTime();
+
+    const newTime = new Date(currentTime + (minutes * 60000));
+
+    const originalDateClass = Date;
+
+    // eslint-disable-next-line no-global-assign
+    Date = function (dateString) {
+        return new originalDateClass(dateString || newTime.toISOString());
+    };
 }
