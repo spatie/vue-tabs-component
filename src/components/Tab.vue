@@ -28,9 +28,8 @@
             },
 
             hash() {
-                return this.id ?
-                    '#' + this.id :
-                    '#' + this.name.toLowerCase().replace(/ /g, '-');
+                let hash_suffix = this.id ? this.id : this.name.toLowerCase().replace(/ /g, '-');
+                return '#' + hash_suffix;
             },
         },
     };

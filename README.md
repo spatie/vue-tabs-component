@@ -149,6 +149,42 @@ You can customize that fragment by using the `id` attribute.
 
 Clicking on `My tab` will then append `#custom-fragment` to the url.
 
+### Methods
+
+```
+selectTab(selectedTabHash)
+```
+
+Activate the tab with the given hash -- a hash looks like #foo
+
+```
+selectTabByIndex(index)
+```
+
+Activate the tab with the given 0-based index.
+
+
+```
+getActiveTabIndex()
+```
+
+Return the 0-based index of the active tab.
+
+
+```
+nextTab(wrap = false)
+```
+
+Activates the next tab, optionally wrapping to the first tab.
+
+
+```
+previousTab(wrap = false) 
+```
+
+Activates the previous tab, optionally wrapping to the last tab.
+
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
