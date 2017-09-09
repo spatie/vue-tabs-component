@@ -5,6 +5,7 @@
                 :class="{ 'is-active': tab.isActive }"
                 class="tabs-component-tab"
                 role="presentation"
+                v-show="tab.isEnabled"
             >
 
                 <a v-html="tab.header"
@@ -88,6 +89,26 @@
                 this.activeTabHash = selectedTab.hash;
 
                 expiringStorage.set(this.storageKey, selectedTab.hash, this.cacheLifetime);
+            },
+            setTabEnabled(hash, enabled) {
+                const tab = this.findTab(hash);
+
+                if (! tab) {
+                    return;
+                }
+
+                tab.isEnabled = enabled;
+                if (tab.isActive) {
+                    // if tab is active, set a different one as active
+                    tab.isActive = enabled;
+                    this.tabs.every(function(element, index, array) {
+                        if (element.isEnabled) {
+                            element.isActive = true;
+                            return false;
+                        }
+                        return true;
+                    })
+                }
             },
         },
     };
