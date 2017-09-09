@@ -123,10 +123,21 @@ When using with other libraries that use the url fragment, you can disable modif
 This helps using it with vue-router, or using vue-tabs-component twice in the same page.
 
 ```html
-<tabs :use-url-fragment="false">
+<tabs :options="options">
   ...
 </tabs>
 ```
+
+```javascript
+...
+data: {
+  options: {
+      useUrlFragment: false,
+  }
+},
+...
+```
+
 
 ### Adding a suffix and a prefix to the tab name
 

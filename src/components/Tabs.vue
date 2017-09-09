@@ -30,7 +30,7 @@
     export default {
         props: {
             cacheLifetime: { default: 5 },
-            useUrlFragment: { type: Boolean, default: true },
+            options: { type: Object, required: false },
         },
 
         data: () => ({
@@ -75,7 +75,7 @@
 
             selectTab(selectedTabHash, event) {
                 // see if we should store the hash in the url fragment
-                if (event && !this.useUrlFragment) event.preventDefault();
+                if (event && !this.options.useUrlFragment) event.preventDefault();
 
                 const selectedTab = this.findTab(selectedTabHash);
 
