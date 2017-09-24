@@ -117,27 +117,15 @@ You can change the cache life time by passing the lifetime in minutes in the `ca
 </tabs>
 ```
 
-### Using with other libraries
+### Disable modifiy the url fragment
 
-When using with other libraries that use the url fragment, you can disable modifying the url fragment.
-This helps using it with vue-router, or using vue-tabs-component twice in the same page.
+When using with other libraries that use the url fragment, you can disable modifying the url fragment by passing the `useUrlFragment` options. This helps using it with vue-router, or using vue-tabs-component twice in the same page.
 
 ```html
-<tabs :options="options">
+<tabs :options="{ useUrlFragment: false }">
   ...
 </tabs>
 ```
-
-```javascript
-...
-data: {
-  options: {
-      useUrlFragment: false,
-  }
-},
-...
-```
-
 
 ### Adding a suffix and a prefix to the tab name
 
