@@ -5,7 +5,6 @@
 .tabs-component-tabs {
   border: solid 1px #ddd;
   border-radius:  6px;
-  list-style: none;
   margin-bottom: 5px;
 }
 
@@ -24,6 +23,7 @@
   font-size: 14px;
   font-weight: 600;
   margin-right: 0;
+  list-style: none;
 }
 
 .tabs-component-tab:not(:last-child) {
