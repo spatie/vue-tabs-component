@@ -159,6 +159,26 @@ You can customize that fragment by using the `id` attribute.
 
 Clicking on `My tab` will then append `#custom-fragment` to the url.
 
+### CSS
+
+You can use the [CSS](docs/resources/tabs-component.css) from the docs as a starting point for your own styling.
+The output HTML has namespaced classes to target all nodes directly.
+
+```html
+<div class="tabs-component">
+    <ul class="tabs-component-tabs">
+        <li class="tabs-component-tab">
+            <a class="tabs-component-tab-a">…</a>
+        </li>
+    </ul>
+    <div class="tabs-component-panels">
+        <section class="tabs-component-panel">
+            …
+        </section>
+    </div>
+</div>
+```
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
