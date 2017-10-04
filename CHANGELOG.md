@@ -2,6 +2,9 @@
 
 All notable changes to `vue-tabs-component` will be documented in this file
 
+## 1.2.2 - 2017-10-04
+- fix default `useUrlFragment` behaviour
+
 ## 1.2.1 - 2017-10-04
 - fix bugs caused by unset options prop
 
