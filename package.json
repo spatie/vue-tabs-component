@@ -1,6 +1,6 @@
 {
   "name": "vue-tabs-component",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A Vue component to easily render tabs",
   "main": "dist/index.js",
   "jsnext:main": "src/index.js",

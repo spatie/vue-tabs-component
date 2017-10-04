@@ -30,7 +30,7 @@
     export default {
         props: {
             cacheLifetime: { default: 5 },
-            options: { type: Object, required: false },
+            options: { type: Object, required: false, default: () => ({}) },
         },
 
         data: () => ({
