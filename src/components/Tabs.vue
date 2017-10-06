@@ -7,7 +7,6 @@
                 role="presentation"
                 v-show="tab.isVisible"
             >
-
                 <a v-html="tab.header"
                    :aria-controls="tab.hash"
                    :aria-selected="tab.isActive"
@@ -16,7 +15,6 @@
                    class="tabs-component-tab-a"
                    role="tab"
                 ></a>
-
             </li>
         </ul>
         <div class="tabs-component-panels">
@@ -34,9 +32,9 @@
             options: {
                 type: Object,
                 required: false,
-                default () {
+                default: () => ({
                     useUrlFragment: true
-                },
+                }),
             },
         },
 
@@ -81,7 +79,7 @@
             },
 
             selectTab(selectedTabHash, event) {
-                // see if we should store the hash in the url fragment
+                // See if we should store the hash in the url fragment.
                 if (event && !this.options.useUrlFragment) {
                   event.preventDefault();
                 }
@@ -102,6 +100,7 @@
 
                 expiringStorage.set(this.storageKey, selectedTab.hash, this.cacheLifetime);
             },
+
             setTabVisible(hash, visible) {
                 const tab = this.findTab(hash);
 
@@ -110,16 +109,20 @@
                 }
 
                 tab.isVisible = visible;
+
                 if (tab.isActive) {
-                    // if tab is active, set a different one as active
+                    // If tab is active, set a different one as active.
                     tab.isActive = visible;
-                    this.tabs.every(function(element, index, array) {
-                        if (element.isVisible) {
-                            element.isActive = true;
+
+                    this.tabs.every((tab, index, array) => {
+                        if (tab.isVisible) {
+                            tab.isActive = true;
+
                             return false;
                         }
+
                         return true;
-                    })
+                    });
                 }
             },
         },
