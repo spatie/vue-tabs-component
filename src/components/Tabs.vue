@@ -5,17 +5,16 @@
                 :class="{ 'is-active': tab.isActive }"
                 class="tabs-component-tab"
                 role="presentation"
+                v-show="tab.isVisible"
             >
-
                 <a v-html="tab.header"
                    :aria-controls="tab.hash"
                    :aria-selected="tab.isActive"
-                   @click="selectTab(tab.hash)"
+                   @click="selectTab(tab.hash, $event)"
                    :href="nested ? null : tab.hash"
                    class="tabs-component-tab-a"
                    role="tab"
                 ></a>
-
             </li>
         </ul>
         <div class="tabs-component-panels">
@@ -33,7 +32,14 @@
             nested: {
                 type: Boolean,
                 default: false,
-            }
+            },
+            options: {
+                type: Object,
+                required: false,
+                default: () => ({
+                    useUrlFragment: true
+                }),
+            },
         },
 
         data: () => ({
@@ -76,7 +82,12 @@
                 return this.tabs.find(tab => tab.hash === hash);
             },
 
-            selectTab(selectedTabHash, setLocationHash) {
+            selectTab(selectedTabHash, event, setLocationHash) {
+                // See if we should store the hash in the url fragment.
+                if (event && !this.options.useUrlFragment) {
+                  event.preventDefault();
+                }
+
                 const selectedTab = this.findTab(selectedTabHash);
 
                 if (! selectedTab) {
@@ -101,7 +112,7 @@
                 const tab = this.tabs[index];
                 const href = tab.hash;
 
-                this.selectTab(href, setLocationHash);
+                this.selectTab(href, null, setLocationHash);
             },
 
             getActiveTabIndex() {
@@ -125,6 +136,31 @@
                     index = wrap ? this.tabs.length - 1 : index + 1;
                 }
                 this.selectTabByIndex(index, true);
+            },
+            
+            setTabVisible(hash, visible) {
+                const tab = this.findTab(hash);
+
+                if (! tab) {
+                    return;
+                }
+
+                tab.isVisible = visible;
+
+                if (tab.isActive) {
+                    // If tab is active, set a different one as active.
+                    tab.isActive = visible;
+
+                    this.tabs.every((tab, index, array) => {
+                        if (tab.isVisible) {
+                            tab.isActive = true;
+
+                            return false;
+                        }
+
+                        return true;
+                    });
+                }
             },
         },
     };

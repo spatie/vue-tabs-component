@@ -117,6 +117,16 @@ You can change the cache life time by passing the lifetime in minutes in the `ca
 </tabs>
 ```
 
+### Disable modifiy the url fragment
+
+When using with other libraries that use the url fragment, you can disable modifying the url fragment by passing the `useUrlFragment` options. This helps using it with vue-router, or using vue-tabs-component twice in the same page.
+
+```html
+<tabs :options="{ useUrlFragment: false }">
+  ...
+</tabs>
+```
+
 ### Adding a suffix and a prefix to the tab name
 
 You can add a suffix and a prefix to the tab by using the `suffix` and `prefix` attributes.
@@ -184,6 +194,25 @@ previousTab(wrap = false)
 
 Activates the previous tab, optionally wrapping to the last tab.
 
+### CSS
+
+You can use the [CSS](docs/resources/tabs-component.css) from the docs as a starting point for your own styling.
+The output HTML has namespaced classes to target all nodes directly.
+
+```html
+<div class="tabs-component">
+    <ul class="tabs-component-tabs">
+        <li class="tabs-component-tab">
+            <a class="tabs-component-tab-a">…</a>
+        </li>
+    </ul>
+    <div class="tabs-component-panels">
+        <section class="tabs-component-panel">
+            …
+        </section>
+    </div>
+</div>
+```
 
 ## Change log
 

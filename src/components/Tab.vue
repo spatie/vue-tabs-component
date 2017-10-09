@@ -20,6 +20,7 @@
 
         data: () => ({
             isActive: false,
+            isVisible: true,
         }),
 
         computed: {
