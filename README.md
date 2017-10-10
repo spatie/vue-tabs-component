@@ -38,14 +38,6 @@ The rendered output adheres to [the ARIA specification](http://heydonworks.com/p
 
 You can see a demo here: http://vue-tabs-component.spatie.be
 
-## Postcardware
-
-You're free to use this package (it's [MIT-licensed](LICENSE.md)), but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
-
-Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
-
-All postcards are published [on our website](https://spatie.be/opensource/postcards).
-
 ## Installation
 
 You can install the package via yarn:
@@ -117,7 +109,7 @@ You can change the cache life time by passing the lifetime in minutes in the `ca
 </tabs>
 ```
 
-### Disable modifiy the url fragment
+### Disable modifying the url fragment
 
 When using with other libraries that use the url fragment, you can disable modifying the url fragment by passing the `useUrlFragment` options. This helps using it with vue-router, or using vue-tabs-component twice in the same page.
 
@@ -179,7 +171,7 @@ The output HTML has namespaced classes to target all nodes directly.
 </div>
 ```
 
-## Change log
+## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
@@ -197,6 +189,14 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 If you discover any security related issues, please contact [Freek Van der Herten](https://github.com/freekmurze) instead of using the issue tracker.
 
+## Postcardware
+
+You're free to use this package, but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
+
+Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
+
+We publish all received postcards [on our company website](https://spatie.be/en/opensource/postcards).
+
 ## Credits
 
 - [Freek Van der Herten](https://github.com/freekmurze)
@@ -206,8 +206,12 @@ If you discover any security related issues, please contact [Freek Van der Herte
 
 This package is based on the solution presented by [Jeffrey Way](https://twitter.com/jeffrey_way) in the [practical example #3](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/11) video in the [Vue series](https://vuecasts.com) on [Laracasts](https://laracasts.com)
 
-## About Spatie
+## Support us
+
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
+
+Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/spatie). 
+All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
 
 ## License
 
