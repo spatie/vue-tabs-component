@@ -20,6 +20,14 @@ exports[`vue-tabs-component can mount tabs 1`] = `
         "
 `;
 
+exports[`vue-tabs-component nested removes the tab hash 1`] = `
+"
+            <div id=\\"app\\"><div class=\\"tabs-component\\"><ul role=\\"tablist\\" class=\\"tabs-component-tabs\\"><li role=\\"presentation\\" class=\\"tabs-component-tab is-active\\"><a aria-controls=\\"#first-tab\\" aria-selected=\\"true\\" role=\\"tab\\" class=\\"tabs-component-tab-a\\">First tab</a></li></ul> <div class=\\"tabs-component-panels\\"><section id=\\"#first-tab\\" role=\\"tabpanel\\" class=\\"tabs-component-panel\\" style=\\"\\">
+                        First tab content
+                    </section></div></div></div>
+        "
+`;
+
 exports[`vue-tabs-component the life time of the cache can be set 1`] = `
 Object {
   "vue-tabs-component.cache.blank": "{\\"value\\":\\"#first-tab\\",\\"expires\\":\\"2017-01-01T00:10:00.000Z\\"}",

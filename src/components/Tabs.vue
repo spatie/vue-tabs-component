@@ -11,7 +11,7 @@
                    :aria-controls="tab.hash"
                    :aria-selected="tab.isActive"
                    @click="selectTab(tab.hash, $event)"
-                   :href="tab.hash"
+                   :href="nested ? null : tab.hash"
                    class="tabs-component-tab-a"
                    role="tab"
                 ></a>
@@ -29,6 +29,10 @@
     export default {
         props: {
             cacheLifetime: { default: 5 },
+            nested: {
+                type: Boolean,
+                default: false,
+            },
             options: {
                 type: Object,
                 required: false,
@@ -78,7 +82,7 @@
                 return this.tabs.find(tab => tab.hash === hash);
             },
 
-            selectTab(selectedTabHash, event) {
+            selectTab(selectedTabHash, event, setLocationHash) {
                 // See if we should store the hash in the url fragment.
                 if (event && !this.options.useUrlFragment) {
                   event.preventDefault();
@@ -97,10 +101,43 @@
                 this.$emit('changed', { tab: selectedTab });
 
                 this.activeTabHash = selectedTab.hash;
+                if (setLocationHash) {
+                    window.location.hash = selectedTab.hash;
+                }
 
                 expiringStorage.set(this.storageKey, selectedTab.hash, this.cacheLifetime);
             },
 
+            selectTabByIndex(index, setLocationHash) {
+                const tab = this.tabs[index];
+                const href = tab.hash;
+
+                this.selectTab(href, null, setLocationHash);
+            },
+
+            getActiveTabIndex() {
+                const tab = this.findTab(this.activeTabHash);
+                return this.tabs.indexOf(tab);
+            },
+
+            nextTab(wrap = false) {
+                let index = this.getActiveTabIndex();
+                index++;
+                if (index === this.tabs.length) {
+                    index = wrap ? 0 : index - 1;
+                }
+                this.selectTabByIndex(index, true);
+            },
+
+            previousTab(wrap = false) {
+                let index = this.getActiveTabIndex();
+                index--;
+                if (index < 0) {
+                    index = wrap ? this.tabs.length - 1 : index + 1;
+                }
+                this.selectTabByIndex(index, true);
+            },
+            
             setTabVisible(hash, visible) {
                 const tab = this.findTab(hash);
 

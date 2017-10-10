@@ -143,6 +143,72 @@ describe('vue-tabs-component', () => {
 
         expect(document.body.innerHTML).toMatchSnapshot();
     });
+
+    it('nested removes the tab hash', async () => {
+        document.body.innerHTML = `
+            <div id="app">
+                <tabs nested>
+                    <tab name="First tab" >
+                        First tab content
+                    </tab>
+                </tabs>
+            </div>
+        `;
+
+        await createVm();
+
+        expect(document.body.innerHTML).toMatchSnapshot();
+    });
+
+    it('moves to the correct tab with wrapping false', async () => {
+        const tabs = await createVm();
+
+        // test nextTab/previousTab with wrapping false
+        expect(tabs.activeTabHash).toEqual('#first-tab');
+        tabs.nextTab();
+        expect(tabs.activeTabHash).toEqual('#second-tab');
+        tabs.nextTab();
+        expect(tabs.activeTabHash).toEqual('#third-tab');
+        tabs.nextTab();
+        expect(tabs.activeTabHash).toEqual('#third-tab');
+        tabs.previousTab();
+        expect(tabs.activeTabHash).toEqual('#second-tab');
+        tabs.previousTab();
+        expect(tabs.activeTabHash).toEqual('#first-tab');
+        tabs.previousTab();
+        expect(tabs.activeTabHash).toEqual('#first-tab');
+    });
+
+    it('moves to the correct tab with wrapping true', async () => {
+        const tabs = await createVm();
+
+        // test nextTab/previousTab with wrapping true
+        expect(tabs.activeTabHash).toEqual('#first-tab');
+        tabs.nextTab(true);
+        expect(tabs.activeTabHash).toEqual('#second-tab');
+        tabs.nextTab(true);
+        expect(tabs.activeTabHash).toEqual('#third-tab');
+        tabs.nextTab(true);
+        expect(tabs.activeTabHash).toEqual('#first-tab');
+
+        tabs.previousTab(true);
+        expect(tabs.activeTabHash).toEqual('#third-tab');
+        tabs.previousTab(true);
+        expect(tabs.activeTabHash).toEqual('#second-tab');
+        tabs.previousTab(true);
+        expect(tabs.activeTabHash).toEqual('#first-tab');
+    });
+
+    it('gets and sets tabs by index number', async () => {
+        const tabs = await createVm();
+
+        expect(tabs.getActiveTabIndex()).toEqual(0);
+        tabs.selectTabByIndex(1);
+        expect(tabs.activeTabHash).toEqual('#second-tab');
+        expect(tabs.getActiveTabIndex()).toEqual(1);
+        tabs.nextTab();
+        expect(tabs.getActiveTabIndex()).toEqual(2);
+    });
 });
 
 async function createVm() {
