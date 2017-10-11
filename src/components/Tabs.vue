@@ -10,7 +10,7 @@
                 <a v-html="tab.header"
                    :aria-controls="tab.hash"
                    :aria-selected="tab.isActive"
-                   @click="selectTab(tab.hash, $event)"
+                   @click="selectTab(tab.hash)"
                    :href="tab.hash"
                    class="tabs-component-tab-a"
                    role="tab"
@@ -24,53 +24,52 @@
 </template>
 
 <script>
-    import expiringStorage from '../expiringStorage';
+    import { ExpiringStorage, HashStorage, ChainStorage } from '../storages';
+
+    function createDefaultStorage(options) {
+        const expiringStorage = new ExpiringStorage(options);
+        const hashStorage = new HashStorage(options);
+        return new ChainStorage({
+            backends: [hashStorage, expiringStorage],
+            ...options,
+        });
+    }
 
     export default {
         props: {
-            cacheLifetime: { default: 5 },
-            options: {
+            id: {
+                type: String,
+                required: false,
+            },
+            storage: {
+                type: Function,
+                required: false,
+                default: createDefaultStorage,
+            },
+            storageOptions: {
                 type: Object,
                 required: false,
                 default: () => ({
-                    useUrlFragment: true
+                    useUrlFragment: true,
+                    cacheLifeTimeInMinutes: 5,
                 }),
             },
         },
 
         data: () => ({
             tabs: [],
-            activeTabHash: '',
+            activeTabHash: null,
         }),
 
         computed: {
-            storageKey() {
-                return `vue-tabs-component.cache.${window.location.host}${window.location.pathname}`;
+            _storage() {
+                const options = {
+                    key: this.id || `${window.location.host}${window.location.pathname}`,
+                    ...this.storageOptions,
+                    autoSelectTab: this.selectTabFromStorage,
+                };
+                return this.storage(options);
             },
-        },
-
-        created() {
-            this.tabs = this.$children;
-        },
-
-        mounted() {
-            window.addEventListener('hashchange', () => this.selectTab(window.location.hash));
-
-            if (this.findTab(window.location.hash)) {
-                this.selectTab(window.location.hash);
-                return;
-            }
-
-            const previousSelectedTabHash = expiringStorage.get(this.storageKey);
-
-            if (this.findTab(previousSelectedTabHash)) {
-                this.selectTab(previousSelectedTabHash);
-                return;
-            }
-
-            if (this.tabs.length) {
-                this.selectTab(this.tabs[0].hash);
-            }
         },
 
         methods: {
@@ -78,27 +77,30 @@
                 return this.tabs.find(tab => tab.hash === hash);
             },
 
-            selectTab(selectedTabHash, event) {
-                // See if we should store the hash in the url fragment.
-                if (event && !this.options.useUrlFragment) {
-                  event.preventDefault();
-                }
+            selectTabFromStorage() {
+                const newTab = this._storage.get();
 
+                if (this.findTab(newTab)) {
+                    this.selectTab(newTab);
+                } else if (this.tabs.length) {
+                    this.selectTab(this.tabs[0].hash);
+                }
+            },
+
+            selectTab(selectedTabHash) {
                 const selectedTab = this.findTab(selectedTabHash);
 
                 if (! selectedTab) {
                     return;
                 }
 
-                this.tabs.forEach(tab => {
-                    tab.isActive = (tab.hash === selectedTab.hash);
-                });
-
-                this.$emit('changed', { tab: selectedTab });
-
-                this.activeTabHash = selectedTab.hash;
-
-                expiringStorage.set(this.storageKey, selectedTab.hash, this.cacheLifetime);
+                if (this._storage.set(selectedTab.hash) !== false) {
+                    this.tabs.forEach(tab => {
+                        tab.isActive = (tab.hash === selectedTab.hash);
+                    });
+                    this.activeTabHash = selectedTab.hash;
+                    this.$emit('changed', { tab: selectedTab });
+                }
             },
 
             setTabVisible(hash, visible) {
@@ -125,6 +127,20 @@
                     });
                 }
             },
+        },
+
+        created() {
+            this.tabs = this.$children;
+        },
+
+        mounted() {
+            this.selectTabFromStorage();
+        },
+
+        beforeDestroy() {
+            if (typeof this._storage.destroy !== 'undefined') {
+                this._storage.destroy();
+            }
         },
     };
 </script>
