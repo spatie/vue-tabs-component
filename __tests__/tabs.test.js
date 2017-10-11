@@ -1,11 +1,17 @@
 import { Tab, Tabs } from '../src';
 import Vue from 'vue/dist/vue.js';
-import expiringStorage from '../src/expiringStorage';
+import { ExpiringStorage } from '../src/storages';
 import LocalStorageMock from './helpers/LocalStorageMock';
 
 const localStorage = new LocalStorageMock();
 
+// noinspection JSAnnotator
 window.localStorage = localStorage;
+
+function newExpiringStorage(options) {
+    const newOptions = { ...options, key: 'blank' };
+    return new ExpiringStorage(newOptions);
+}
 
 describe('vue-tabs-component', () => {
     Vue.component('tabs', Tabs);
@@ -55,7 +61,7 @@ describe('vue-tabs-component', () => {
     it('uses a custom fragment', async () => {
         document.body.innerHTML = `
             <div id="app">
-                <tabs cache-lifetime="10">
+                <tabs :storage-options="{ cacheLifeTimeInMinutes: 10 }">
                     <tab id="my-fragment" name="First tab" >
                         First tab content
                     </tab>
@@ -70,8 +76,7 @@ describe('vue-tabs-component', () => {
 
     it('uses the fragment of the url to determine which tab to open', async () => {
         window.location.hash = '#second-tab';
-
-        const tabs = await createVm();
+        await createVm();
 
         expect(document.body.innerHTML).toMatchSnapshot();
     });
@@ -95,19 +100,27 @@ describe('vue-tabs-component', () => {
     });
 
     it('opens up the tabname found in storage', async () => {
-        expiringStorage.set('vue-tabs-component.cache.blank', '#third-tab', 5);
-
-        const tabs = await createVm();
+        const storage = newExpiringStorage();
+        storage.set('#third-tab');
+        const tabs = await createVm({
+            props: {
+                storage: () => storage,
+            },
+        });
 
         expect(tabs.activeTabHash).toEqual('#third-tab');
     });
 
     it('will not use the tab in storage if it has expired', async () => {
-        expiringStorage.set('vue-tabs-component.cache.blank', '#third-tab', 5);
-
+        const storage = newExpiringStorage();
+        storage.set('#third-tab');
         progressTime(6);
 
-        const tabs = await createVm();
+        const tabs = await createVm({
+            props: {
+                storage: () => storage,
+            },
+        });
 
         expect(tabs.activeTabHash).toEqual('#first-tab');
     });
@@ -115,7 +128,7 @@ describe('vue-tabs-component', () => {
     it('the life time of the cache can be set', async () => {
         document.body.innerHTML = `
             <div id="app">
-                <tabs cache-lifetime="10">
+                <tabs :storage-options="{ cacheLifeTimeInMinutes: 10 }">
                     <tab name="First tab">
                         First tab content
                     </tab>
@@ -131,7 +144,7 @@ describe('vue-tabs-component', () => {
     it('can accept a prefix and a suffix for the name', async () => {
         document.body.innerHTML = `
             <div id="app">
-                <tabs cache-lifetime="10">
+                <tabs :storage-options="{ cacheLifeTimeInMinutes: 10 }">
                     <tab name="First tab" prefix="prefix" suffix="suffix">
                         First tab content
                     </tab>
@@ -145,9 +158,10 @@ describe('vue-tabs-component', () => {
     });
 });
 
-async function createVm() {
+async function createVm(options = {}) {
     const vm = new Vue({
         el: '#app',
+        ...options,
     });
 
     await Vue.nextTick();
