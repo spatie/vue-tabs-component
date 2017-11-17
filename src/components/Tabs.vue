@@ -6,6 +6,7 @@
                 class="tabs-component-tab"
                 role="presentation"
                 v-show="tab.isVisible"
+				:style="`order: ${tab.order}`"
             >
                 <a v-html="tab.header"
                    :aria-controls="tab.hash"
