@@ -16,6 +16,7 @@
             name: { required: true },
             prefix: { default: '' },
             suffix: { default: '' },
+			order: { default: 0 },
         },
 
         data: () => ({
