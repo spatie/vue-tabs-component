@@ -1,7 +1,9 @@
 <template>
     <div class="tabs-component">
         <ul role="tablist" class="tabs-component-tabs">
-            <li v-for="tab in tabs"
+            <li
+                v-for="(tab, i) in tabs"
+                :key="i"
                 :class="{ 'is-active': tab.isActive, 'is-disabled': tab.isDisabled }"
                 class="tabs-component-tab"
                 role="presentation"
@@ -28,7 +30,9 @@
 
     export default {
         props: {
-            cacheLifetime: { default: 5 },
+            cacheLifetime: {
+                default: 5,
+            },
             options: {
                 type: Object,
                 required: false,

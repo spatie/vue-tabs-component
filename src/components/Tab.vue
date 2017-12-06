@@ -33,6 +33,7 @@
                 if (this.isDisabled) {
                     return '#';
                 }
+
                 return this.id ?
                     '#' + this.id :
                     '#' + this.name.toLowerCase().replace(/ /g, '-');
