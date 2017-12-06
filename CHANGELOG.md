@@ -2,6 +2,9 @@
 
 All notable changes to `vue-tabs-component` will be documented in this file
 
+## 1.3.1 - 2017-11-06
+ - Added `isDisabled` prop to `Tab`
+
 ## 1.3.0 - 2017-10-06
 - Added `isVisible` prop to `Tab`
 

@@ -18,6 +18,9 @@ This is how they can be used:
         <tab name="Second tab">
             This is the content of the second tab
         </tab>
+        <tab name="Disabled tab" :is-disabled="true">
+            This content will be unavailable while :is-disabled prop set to true
+        </tab>
         <tab id="oh-hi-mark" name="Custom fragment">
             The fragment that is appended to the url can be customized
         </tab>

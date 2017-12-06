@@ -2,7 +2,7 @@
     <div class="tabs-component">
         <ul role="tablist" class="tabs-component-tabs">
             <li v-for="tab in tabs"
-                :class="{ 'is-active': tab.isActive }"
+                :class="{ 'is-active': tab.isActive, 'is-disabled': tab.isDisabled }"
                 class="tabs-component-tab"
                 role="presentation"
                 v-show="tab.isVisible"
@@ -33,7 +33,7 @@
                 type: Object,
                 required: false,
                 default: () => ({
-                    useUrlFragment: true
+                    useUrlFragment: true,
                 }),
             },
         },
@@ -81,12 +81,16 @@
             selectTab(selectedTabHash, event) {
                 // See if we should store the hash in the url fragment.
                 if (event && !this.options.useUrlFragment) {
-                  event.preventDefault();
+                    event.preventDefault();
                 }
 
                 const selectedTab = this.findTab(selectedTabHash);
 
                 if (! selectedTab) {
+                    return;
+                }
+
+                if (selectedTab.isDisabled) {
                     return;
                 }
 

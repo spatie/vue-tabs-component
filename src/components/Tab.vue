@@ -16,6 +16,7 @@
             name: { required: true },
             prefix: { default: '' },
             suffix: { default: '' },
+            isDisabled:{ default: false },
         },
 
         data: () => ({
@@ -29,6 +30,9 @@
             },
 
             hash() {
+                if (this.isDisabled) {
+                    return '#';
+                }
                 return this.id ?
                     '#' + this.id :
                     '#' + this.name.toLowerCase().replace(/ /g, '-');

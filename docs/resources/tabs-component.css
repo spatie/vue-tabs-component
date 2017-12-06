@@ -4,7 +4,7 @@
 
 .tabs-component-tabs {
   border: solid 1px #ddd;
-  border-radius:  6px;
+  border-radius: 6px;
   margin-bottom: 5px;
 }
 
@@ -36,6 +36,11 @@
 
 .tabs-component-tab.is-active {
   color: #000;
+}
+
+.tabs-component-tab.is-disabled * {
+  color: #cdcdcd;
+  cursor: not-allowed !important;
 }
 
 @media (min-width: 700px) {
