@@ -38,6 +38,7 @@
                 required: false,
                 default: () => ({
                     useUrlFragment: true,
+                    disableStorage: false,
                 }),
             },
         },
@@ -65,11 +66,13 @@
                 return;
             }
 
-            const previousSelectedTabHash = expiringStorage.get(this.storageKey);
+            if (!this.options.disableStorage) {
+                const previousSelectedTabHash = expiringStorage.get(this.storageKey);
 
-            if (this.findTab(previousSelectedTabHash)) {
-                this.selectTab(previousSelectedTabHash);
-                return;
+                if (this.findTab(previousSelectedTabHash)) {
+                    this.selectTab(previousSelectedTabHash);
+                    return;
+                }
             }
 
             if (this.tabs.length) {
@@ -106,7 +109,9 @@
 
                 this.activeTabHash = selectedTab.hash;
 
-                expiringStorage.set(this.storageKey, selectedTab.hash, this.cacheLifetime);
+                if (!this.options.disableStorage) {
+                    expiringStorage.set(this.storageKey, selectedTab.hash, this.cacheLifetime);
+                }
             },
 
             setTabVisible(hash, visible) {
