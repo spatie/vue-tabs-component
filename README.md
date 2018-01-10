@@ -24,8 +24,8 @@ This is how they can be used:
         <tab id="oh-hi-mark" name="Custom fragment">
             The fragment that is appended to the url can be customized
         </tab>
-        <tab prefix="<span class='glyphicon glyphicon-star'></span> "
-             name="Prefix and suffix"
+        <tab prefix="<span class='glyphicon glyphicon-star'></span> " 
+             name="Prefix and suffix" 
              suffix=" <span class='badge'>4</span>">
             A prefix and a suffix can be added
         </tab>
@@ -76,7 +76,7 @@ import Tabs from 'vue-tabs-component';
 Vue.use(Tabs);
 ```
 
-On your page you can now use html like this to render tabs:
+On your page you can now use html like this to render tabs: 
 
 ```html
 <div>
@@ -146,7 +146,7 @@ The fragment that's added to the url when clicking the tab will only be based on
 
 ### Customizing fragments
 
-When clicking on a tab it's name will be used as a fragment in the url. For example clicking on the `Second tab` will append `#second-tab` to the current url.
+When clicking on a tab it's name will be used as a fragment in the url. For example clicking on the `Second tab` will append `#second-tab` to the current url. 
 
 You can customize that fragment by using the `id` attribute.
 
@@ -221,7 +221,7 @@ This package is based on the solution presented by [Jeffrey Way](https://twitter
 
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
 
-Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/spatie).
+Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/spatie). 
 All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
 
 ## License
