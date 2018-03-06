@@ -2,6 +2,9 @@
 
 All notable changes to `vue-tabs-component` will be documented in this file
 
+## 1.4.1 - 2018-03-06
+- Fixed a bug which caused sections within tabs to have a '#' included in their id attribute.
+
 ## 1.4.0 - 2017-11-06
 - Added `isDisabled` prop to `Tab`
 
