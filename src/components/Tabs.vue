@@ -45,7 +45,7 @@
         data: () => ({
             tabs: [],
             activeTabHash: '',
-            activeTabIndex 0,
+            activeTabIndex: 0,
         }),
 
         computed: {
