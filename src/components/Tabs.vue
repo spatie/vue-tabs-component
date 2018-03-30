@@ -45,6 +45,7 @@
         data: () => ({
             tabs: [],
             activeTabHash: '',
+            activeTabIndex 0,
         }),
 
         computed: {
@@ -105,6 +106,7 @@
                 this.$emit('changed', { tab: selectedTab });
 
                 this.activeTabHash = selectedTab.hash;
+                this.activeTabIndex = this.getTabIndex(selectedTabHash);
 
                 expiringStorage.set(this.storageKey, selectedTab.hash, this.cacheLifetime);
             },
