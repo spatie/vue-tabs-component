@@ -98,6 +98,9 @@
                     return;
                 }
 
+                const activeTab = this.findTab(this.activeTabHash);
+                this.$emit('before-change', { activeTab: activeTab, newTab: selectedTab });
+
                 this.tabs.forEach(tab => {
                     tab.isActive = (tab.hash === selectedTab.hash);
                 });
