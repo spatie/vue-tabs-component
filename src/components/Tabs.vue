@@ -38,6 +38,7 @@
                 required: false,
                 default: () => ({
                     useUrlFragment: true,
+                    defaultTabHash: null,
                 }),
             },
         },
@@ -69,6 +70,11 @@
 
             if (this.findTab(previousSelectedTabHash)) {
                 this.selectTab(previousSelectedTabHash);
+                return;
+            }
+
+            if(this.options.defaultTabHash !== null && this.findTab("#" + this.options.defaultTabHash)) {
+                this.selectTab("#" + this.options.defaultTabHash);
                 return;
             }
 

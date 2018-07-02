@@ -2,6 +2,9 @@
 
 All notable changes to `vue-tabs-component` will be documented in this file
 
+## 1.5.0 - 2018-07-02
+- Added `defaultTabHash` option
+
 ## 1.4.0 - 2017-11-06
 - Added `isDisabled` prop to `Tab`
 
