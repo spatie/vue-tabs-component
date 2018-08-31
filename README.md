@@ -182,6 +182,22 @@ You can customize that fragment by using the `id` attribute.
 
 Clicking on `My tab` will then append `#custom-fragment` to the url.
 
+
+### Setting a default tab
+
+When disabling the cache, it can be useful to specify a default tab to load which is not the first one.  You can select this by passing the `defaultTabHash` option.
+
+```html
+<tabs :options="{ defaultTabHash: 'second-tab' }">
+    <tab id="first-tab" name="First tab">
+        First tab content
+    </tab>
+    <tab id="second-tab" name="Default tab">
+        Second tab content
+    </tab>
+</tabs>
+```
+
 ### CSS
 
 You can use the [CSS](docs/resources/tabs-component.css) from the docs as a starting point for your own styling.
