@@ -1,4 +1,4 @@
-# A Vue component to easily render tabs
+﻿# A Vue component to easily render tabs
 
 [![Latest Version on NPM](https://img.shields.io/npm/v/vue-tabs-component.svg?style=flat-square)](https://npmjs.com/package/vue-tabs-component)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
@@ -8,10 +8,10 @@
 The package contains a [Vue](https://vuejs.org/) component to easily display some tabs.
 
 This is how they can be used:
-
+=
 ```html
 <div>
-    <tabs>
+    <tabs :options="{ useUrlFragment: false }" @clicked="tabClicked" @changed="tabChanged">
         <tab name="First tab">
             This is the content of the first tab
         </tab>
@@ -122,6 +122,34 @@ When using with other libraries that use the url fragment, you can disable modif
 </tabs>
 ```
 
+### Callbacks
+Tabs has two events to which you can bind: `changed` and `clicked`
+
+```html
+<tabs @clicked="tabClicked" @changed="tabChanged">
+  ...
+</tabs>
+```
+
+```js
+export default {
+    ...
+    methods: {
+        ...
+        tabClicked (selectedTab) {
+            console.log('Current tab re-clicked:' + selectedTab.tab.name);
+        },
+        tabChanged (selectedTab) {
+            console.log('Tab changed to:' + selectedTab.tab.name);
+        },
+        ...
+    }
+}
+```
+
+`changed` is emitted when the tab changes and can be used as handle to load data on request.
+`clicked` is emitted when an active tab is re-clicked and can be used to e.g. reload the data in the current tab.
+
 ### Adding a suffix and a prefix to the tab name
 
 You can add a suffix and a prefix to the tab by using the `suffix` and `prefix` attributes.
@@ -153,6 +181,22 @@ You can customize that fragment by using the `id` attribute.
 ```
 
 Clicking on `My tab` will then append `#custom-fragment` to the url.
+
+
+### Setting a default tab
+
+When disabling the cache, it can be useful to specify a default tab to load which is not the first one.  You can select this by passing the `defaultTabHash` option.
+
+```html
+<tabs :options="{ defaultTabHash: 'second-tab' }">
+    <tab id="first-tab" name="First tab">
+        First tab content
+    </tab>
+    <tab id="second-tab" name="Default tab">
+        Second tab content
+    </tab>
+</tabs>
+```
 
 ### CSS
 
