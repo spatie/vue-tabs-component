@@ -103,6 +103,7 @@
                 }
 
                 if (selectedTab.isDisabled) {
+                    event.preventDefault();
                     return;
                 }
 
