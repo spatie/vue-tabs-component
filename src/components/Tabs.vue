@@ -46,6 +46,7 @@
             tabs: [],
             activeTabHash: '',
             activeTabIndex: 0,
+            lastActiveTabHash: '',
         }),
 
         computed: {
@@ -99,6 +100,11 @@
                     return;
                 }
 
+                if (this.lastActiveTabHash === selectedTab.hash) {
+                    this.$emit('clicked', { tab: selectedTab });
+                    return;
+                }
+
                 this.tabs.forEach(tab => {
                     tab.isActive = (tab.hash === selectedTab.hash);
                 });
@@ -107,6 +113,8 @@
 
                 this.activeTabHash = selectedTab.hash;
                 this.activeTabIndex = this.getTabIndex(selectedTabHash);
+
+                this.lastActiveTabHash = this.activeTabHash = selectedTab.hash;
 
                 expiringStorage.set(this.storageKey, selectedTab.hash, this.cacheLifetime);
             },
