@@ -6,6 +6,7 @@ All notable changes to `vue-tabs-component` will be documented in this file
 - Added `defaultTabHash` option
 - Fixed bug #32 `changed` event fires twice on each change
 - Added `clicked` event, fires when active tab is clicked
+- Fixed a bug which caused sections within tabs to have a '#' included in their id attribute.
 
 ## 1.4.0 - 2017-11-06
 - Added `isDisabled` prop to `Tab`
