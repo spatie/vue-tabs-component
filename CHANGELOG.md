@@ -2,8 +2,10 @@
 
 All notable changes to `vue-tabs-component` will be documented in this file
 
-## 1.5.0 - 2018-07-02
+## 1.5.0 - 2018-XX-XX
 - Added `defaultTabHash` option
+- Fixed bug #32 `changed` event fires twice on each change
+- Added `clicked` event, fires when active tab is clicked
 
 ## 1.4.0 - 2017-11-06
 - Added `isDisabled` prop to `Tab`
