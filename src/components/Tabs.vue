@@ -30,6 +30,10 @@
 
     export default {
         props: {
+            nested: {
+                type: Boolean,
+                default: false,
+            },
             cacheLifetime: {
                 default: 5,
             },
@@ -54,12 +58,6 @@
             storageKey() {
                 return `vue-tabs-component.cache.${window.location.host}${window.location.pathname}`;
             },
-
-            activeTabIndex() {
-                const tab = this.findTab(this.activeTabHash);
-                return this.tabs.indexOf(tab);
-            },
-
         },
 
         created() {
