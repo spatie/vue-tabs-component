@@ -9,7 +9,11 @@ module.exports = merge(require('./webpack.base'), {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index.js',
-        library: 'vue-tabs',
+        library: {
+            root: 'VueTabs',
+            amd: 'vue-tabs',
+            commonjs: 'vue-tabs'
+        },
         libraryTarget: 'umd',
     },
 

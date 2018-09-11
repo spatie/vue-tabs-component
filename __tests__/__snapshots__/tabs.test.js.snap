@@ -2,7 +2,7 @@
 
 exports[`vue-tabs-component can accept a prefix and a suffix for the name 1`] = `
 "
-            <div id=\\"app\\"><div class=\\"tabs-component\\"><ul role=\\"tablist\\" class=\\"tabs-component-tabs\\"><li role=\\"presentation\\" class=\\"tabs-component-tab is-active\\"><a aria-controls=\\"#first-tab\\" aria-selected=\\"true\\" href=\\"#first-tab\\" role=\\"tab\\" class=\\"tabs-component-tab-a\\">prefixFirst tabsuffix</a></li></ul> <div class=\\"tabs-component-panels\\"><section id=\\"#first-tab\\" role=\\"tabpanel\\" class=\\"tabs-component-panel\\" style=\\"\\">
+            <div id=\\"app\\"><div class=\\"tabs-component\\"><ul role=\\"tablist\\" class=\\"tabs-component-tabs\\"><li role=\\"presentation\\" class=\\"tabs-component-tab is-active\\"><a aria-controls=\\"#first-tab\\" aria-selected=\\"true\\" href=\\"#first-tab\\" role=\\"tab\\" class=\\"tabs-component-tab-a\\">prefixFirst tabsuffix</a></li></ul> <div class=\\"tabs-component-panels\\"><section id=\\"first-tab\\" role=\\"tabpanel\\" class=\\"tabs-component-panel\\" style=\\"\\">
                         First tab content
                     </section></div></div></div>
         "
@@ -10,11 +10,11 @@ exports[`vue-tabs-component can accept a prefix and a suffix for the name 1`] = 
 
 exports[`vue-tabs-component can mount tabs 1`] = `
 "
-            <div id=\\"app\\"><div class=\\"tabs-component\\"><ul role=\\"tablist\\" class=\\"tabs-component-tabs\\"><li role=\\"presentation\\" class=\\"tabs-component-tab is-active\\"><a aria-controls=\\"#first-tab\\" aria-selected=\\"true\\" href=\\"#first-tab\\" role=\\"tab\\" class=\\"tabs-component-tab-a\\">First tab</a></li><li role=\\"presentation\\" class=\\"tabs-component-tab\\"><a aria-controls=\\"#second-tab\\" href=\\"#second-tab\\" role=\\"tab\\" class=\\"tabs-component-tab-a\\">Second tab</a></li><li role=\\"presentation\\" class=\\"tabs-component-tab\\"><a aria-controls=\\"#third-tab\\" href=\\"#third-tab\\" role=\\"tab\\" class=\\"tabs-component-tab-a\\">Third tab</a></li></ul> <div class=\\"tabs-component-panels\\"><section id=\\"#first-tab\\" role=\\"tabpanel\\" class=\\"tabs-component-panel\\" style=\\"\\">
+            <div id=\\"app\\"><div class=\\"tabs-component\\"><ul role=\\"tablist\\" class=\\"tabs-component-tabs\\"><li role=\\"presentation\\" class=\\"tabs-component-tab is-active\\"><a aria-controls=\\"#first-tab\\" aria-selected=\\"true\\" href=\\"#first-tab\\" role=\\"tab\\" class=\\"tabs-component-tab-a\\">First tab</a></li><li role=\\"presentation\\" class=\\"tabs-component-tab\\"><a aria-controls=\\"#second-tab\\" href=\\"#second-tab\\" role=\\"tab\\" class=\\"tabs-component-tab-a\\">Second tab</a></li><li role=\\"presentation\\" class=\\"tabs-component-tab\\"><a aria-controls=\\"#third-tab\\" href=\\"#third-tab\\" role=\\"tab\\" class=\\"tabs-component-tab-a\\">Third tab</a></li></ul> <div class=\\"tabs-component-panels\\"><section id=\\"first-tab\\" role=\\"tabpanel\\" class=\\"tabs-component-panel\\" style=\\"\\">
                         First tab content
-                    </section> <section aria-hidden=\\"true\\" id=\\"#second-tab\\" role=\\"tabpanel\\" class=\\"tabs-component-panel\\" style=\\"display: none;\\">
+                    </section> <section aria-hidden=\\"true\\" id=\\"second-tab\\" role=\\"tabpanel\\" class=\\"tabs-component-panel\\" style=\\"display: none;\\">
                         Second tab content
-                    </section> <section aria-hidden=\\"true\\" id=\\"#third-tab\\" role=\\"tabpanel\\" class=\\"tabs-component-panel\\" style=\\"display: none;\\">
+                    </section> <section aria-hidden=\\"true\\" id=\\"third-tab\\" role=\\"tabpanel\\" class=\\"tabs-component-panel\\" style=\\"display: none;\\">
                         Third tab content
                     </section></div></div></div>
         "
@@ -36,11 +36,11 @@ Object {
 
 exports[`vue-tabs-component uses the fragment of the url to determine which tab to open 1`] = `
 "
-            <div id=\\"app\\"><div class=\\"tabs-component\\"><ul role=\\"tablist\\" class=\\"tabs-component-tabs\\"><li role=\\"presentation\\" class=\\"tabs-component-tab\\"><a aria-controls=\\"#first-tab\\" href=\\"#first-tab\\" role=\\"tab\\" class=\\"tabs-component-tab-a\\">First tab</a></li><li role=\\"presentation\\" class=\\"tabs-component-tab is-active\\"><a aria-controls=\\"#second-tab\\" aria-selected=\\"true\\" href=\\"#second-tab\\" role=\\"tab\\" class=\\"tabs-component-tab-a\\">Second tab</a></li><li role=\\"presentation\\" class=\\"tabs-component-tab\\"><a aria-controls=\\"#third-tab\\" href=\\"#third-tab\\" role=\\"tab\\" class=\\"tabs-component-tab-a\\">Third tab</a></li></ul> <div class=\\"tabs-component-panels\\"><section aria-hidden=\\"true\\" id=\\"#first-tab\\" role=\\"tabpanel\\" class=\\"tabs-component-panel\\" style=\\"display: none;\\">
+            <div id=\\"app\\"><div class=\\"tabs-component\\"><ul role=\\"tablist\\" class=\\"tabs-component-tabs\\"><li role=\\"presentation\\" class=\\"tabs-component-tab\\"><a aria-controls=\\"#first-tab\\" href=\\"#first-tab\\" role=\\"tab\\" class=\\"tabs-component-tab-a\\">First tab</a></li><li role=\\"presentation\\" class=\\"tabs-component-tab is-active\\"><a aria-controls=\\"#second-tab\\" aria-selected=\\"true\\" href=\\"#second-tab\\" role=\\"tab\\" class=\\"tabs-component-tab-a\\">Second tab</a></li><li role=\\"presentation\\" class=\\"tabs-component-tab\\"><a aria-controls=\\"#third-tab\\" href=\\"#third-tab\\" role=\\"tab\\" class=\\"tabs-component-tab-a\\">Third tab</a></li></ul> <div class=\\"tabs-component-panels\\"><section aria-hidden=\\"true\\" id=\\"first-tab\\" role=\\"tabpanel\\" class=\\"tabs-component-panel\\" style=\\"display: none;\\">
                         First tab content
-                    </section> <section id=\\"#second-tab\\" role=\\"tabpanel\\" class=\\"tabs-component-panel\\" style=\\"\\">
+                    </section> <section id=\\"second-tab\\" role=\\"tabpanel\\" class=\\"tabs-component-panel\\" style=\\"\\">
                         Second tab content
-                    </section> <section aria-hidden=\\"true\\" id=\\"#third-tab\\" role=\\"tabpanel\\" class=\\"tabs-component-panel\\" style=\\"display: none;\\">
+                    </section> <section aria-hidden=\\"true\\" id=\\"third-tab\\" role=\\"tabpanel\\" class=\\"tabs-component-panel\\" style=\\"display: none;\\">
                         Third tab content
                     </section></div></div></div>
         "

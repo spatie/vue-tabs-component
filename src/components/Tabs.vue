@@ -1,8 +1,10 @@
 <template>
     <div class="tabs-component">
         <ul role="tablist" class="tabs-component-tabs">
-            <li v-for="tab in tabs"
-                :class="{ 'is-active': tab.isActive }"
+            <li
+                v-for="(tab, i) in tabs"
+                :key="i"
+                :class="{ 'is-active': tab.isActive, 'is-disabled': tab.isDisabled }"
                 class="tabs-component-tab"
                 role="presentation"
                 v-show="tab.isVisible"
@@ -28,16 +30,15 @@
 
     export default {
         props: {
-            cacheLifetime: { default: 5 },
-            nested: {
-                type: Boolean,
-                default: false,
+            cacheLifetime: {
+                default: 5,
             },
             options: {
                 type: Object,
                 required: false,
                 default: () => ({
-                    useUrlFragment: true
+                    useUrlFragment: true,
+                    defaultTabHash: null,
                 }),
             },
         },
@@ -45,6 +46,8 @@
         data: () => ({
             tabs: [],
             activeTabHash: '',
+            activeTabIndex: 0,
+            lastActiveTabHash: '',
         }),
 
         computed: {
@@ -78,6 +81,11 @@
                 return;
             }
 
+            if(this.options.defaultTabHash !== null && this.findTab("#" + this.options.defaultTabHash)) {
+                this.selectTab("#" + this.options.defaultTabHash);
+                return;
+            }
+
             if (this.tabs.length) {
                 this.selectTab(this.tabs[0].hash);
             }
@@ -91,12 +99,22 @@
             selectTab(selectedTabHash, event, setLocationHash) {
                 // See if we should store the hash in the url fragment.
                 if (event && !this.options.useUrlFragment) {
-                  event.preventDefault();
+                    event.preventDefault();
                 }
 
                 const selectedTab = this.findTab(selectedTabHash);
 
                 if (! selectedTab) {
+                    return;
+                }
+
+                if (selectedTab.isDisabled) {
+                    event.preventDefault();
+                    return;
+                }
+
+                if (this.lastActiveTabHash === selectedTab.hash) {
+                    this.$emit('clicked', { tab: selectedTab });
                     return;
                 }
 
@@ -107,6 +125,9 @@
                 this.$emit('changed', { tab: selectedTab });
 
                 this.activeTabHash = selectedTab.hash;
+                this.activeTabIndex = this.getTabIndex(selectedTabHash);
+
+                this.lastActiveTabHash = this.activeTabHash = selectedTab.hash;
 
                 if (setLocationHash) {
                     window.location.hash = selectedTab.hash;
@@ -163,6 +184,30 @@
                         return true;
                     });
                 }
+            },
+            
+            getTabIndex(hash){
+            	const tab = this.findTab(hash);
+            	
+            	return this.tabs.indexOf(tab);
+            },
+            
+			getTabHash(index){
+            	const tab = this.tabs.find(tab => this.tabs.indexOf(tab) === index);
+            	
+            	if (!tab) {
+					return;
+                }
+                
+                return tab.hash;
+			},
+            
+            getActiveTab(){
+            	return this.findTab(this.activeTabHash);
+            },
+            
+			getActiveTabIndex() {
+            	return this.getTabIndex(this.activeTabHash);
             },
         },
     };

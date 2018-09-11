@@ -1,4 +1,4 @@
-# A Vue component to easily render tabs
+﻿# A Vue component to easily render tabs
 
 [![Latest Version on NPM](https://img.shields.io/npm/v/vue-tabs-component.svg?style=flat-square)](https://npmjs.com/package/vue-tabs-component)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
@@ -8,15 +8,18 @@
 The package contains a [Vue](https://vuejs.org/) component to easily display some tabs.
 
 This is how they can be used:
-
+=
 ```html
 <div>
-    <tabs>
+    <tabs :options="{ useUrlFragment: false }" @clicked="tabClicked" @changed="tabChanged">
         <tab name="First tab">
             This is the content of the first tab
         </tab>
         <tab name="Second tab">
             This is the content of the second tab
+        </tab>
+        <tab name="Disabled tab" :is-disabled="true">
+            This content will be unavailable while :is-disabled prop set to true
         </tab>
         <tab id="oh-hi-mark" name="Custom fragment">
             The fragment that is appended to the url can be customized
@@ -37,14 +40,6 @@ The rendered output adheres to [the ARIA specification](http://heydonworks.com/p
 ## Demo
 
 You can see a demo here: http://vue-tabs-component.spatie.be
-
-## Postcardware
-
-You're free to use this package (it's [MIT-licensed](LICENSE.md)), but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
-
-Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
-
-All postcards are published [on our website](https://spatie.be/opensource/postcards).
 
 ## Installation
 
@@ -117,7 +112,7 @@ You can change the cache life time by passing the lifetime in minutes in the `ca
 </tabs>
 ```
 
-### Disable modifiy the url fragment
+### Disable modifying the url fragment
 
 When using with other libraries that use the url fragment, you can disable modifying the url fragment by passing the `useUrlFragment` options. This helps using it with vue-router, or using vue-tabs-component twice in the same page.
 
@@ -126,6 +121,34 @@ When using with other libraries that use the url fragment, you can disable modif
   ...
 </tabs>
 ```
+
+### Callbacks
+Tabs has two events to which you can bind: `changed` and `clicked`
+
+```html
+<tabs @clicked="tabClicked" @changed="tabChanged">
+  ...
+</tabs>
+```
+
+```js
+export default {
+    ...
+    methods: {
+        ...
+        tabClicked (selectedTab) {
+            console.log('Current tab re-clicked:' + selectedTab.tab.name);
+        },
+        tabChanged (selectedTab) {
+            console.log('Tab changed to:' + selectedTab.tab.name);
+        },
+        ...
+    }
+}
+```
+
+`changed` is emitted when the tab changes and can be used as handle to load data on request.
+`clicked` is emitted when an active tab is re-clicked and can be used to e.g. reload the data in the current tab.
 
 ### Adding a suffix and a prefix to the tab name
 
@@ -195,6 +218,20 @@ activeTabIndex
 
 Return the 0-based index of the active tab.
 
+### Setting a default tab
+
+When disabling the cache, it can be useful to specify a default tab to load which is not the first one.  You can select this by passing the `defaultTabHash` option.
+
+```html
+<tabs :options="{ defaultTabHash: 'second-tab' }">
+    <tab id="first-tab" name="First tab">
+        First tab content
+    </tab>
+    <tab id="second-tab" name="Default tab">
+        Second tab content
+    </tab>
+</tabs>
+```
 
 ### CSS
 
@@ -216,7 +253,7 @@ The output HTML has namespaced classes to target all nodes directly.
 </div>
 ```
 
-## Change log
+## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
@@ -234,6 +271,14 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 If you discover any security related issues, please contact [Freek Van der Herten](https://github.com/freekmurze) instead of using the issue tracker.
 
+## Postcardware
+
+You're free to use this package, but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
+
+Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
+
+We publish all received postcards [on our company website](https://spatie.be/en/opensource/postcards).
+
 ## Credits
 
 - [Freek Van der Herten](https://github.com/freekmurze)
@@ -243,8 +288,12 @@ If you discover any security related issues, please contact [Freek Van der Herte
 
 This package is based on the solution presented by [Jeffrey Way](https://twitter.com/jeffrey_way) in the [practical example #3](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/11) video in the [Vue series](https://vuecasts.com) on [Laracasts](https://laracasts.com)
 
-## About Spatie
+## Support us
+
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
+
+Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/spatie). 
+All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
 
 ## License
 
