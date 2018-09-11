@@ -175,24 +175,26 @@ Activate the tab with the given 0-based index.
 
 
 ```
-getActiveTabIndex()
-```
-
-Return the 0-based index of the active tab.
-
-
-```
-nextTab(wrap = false)
+nextTab(cycle = false)
 ```
 
 Activates the next tab, optionally wrapping to the first tab.
 
 
 ```
-previousTab(wrap = false) 
+previousTab(cycle = false)
 ```
 
 Activates the previous tab, optionally wrapping to the last tab.
+
+### Properties
+
+```
+activeTabIndex
+```
+
+Return the 0-based index of the active tab.
+
 
 ### CSS
 

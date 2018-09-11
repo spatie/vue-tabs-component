@@ -51,6 +51,12 @@
             storageKey() {
                 return `vue-tabs-component.cache.${window.location.host}${window.location.pathname}`;
             },
+
+            activeTabIndex() {
+                const tab = this.findTab(this.activeTabHash);
+                return this.tabs.indexOf(tab);
+            },
+
         },
 
         created() {
@@ -101,6 +107,7 @@
                 this.$emit('changed', { tab: selectedTab });
 
                 this.activeTabHash = selectedTab.hash;
+
                 if (setLocationHash) {
                     window.location.hash = selectedTab.hash;
                 }
@@ -115,25 +122,20 @@
                 this.selectTab(href, null, setLocationHash);
             },
 
-            getActiveTabIndex() {
-                const tab = this.findTab(this.activeTabHash);
-                return this.tabs.indexOf(tab);
-            },
-
-            nextTab(wrap = false) {
-                let index = this.getActiveTabIndex();
+            nextTab(cycle = false) {
+                let index = this.activeTabIndex;
                 index++;
                 if (index === this.tabs.length) {
-                    index = wrap ? 0 : index - 1;
+                    index = cycle ? 0 : index - 1;
                 }
                 this.selectTabByIndex(index, true);
             },
 
-            previousTab(wrap = false) {
-                let index = this.getActiveTabIndex();
+            previousTab(cycle = false) {
+                let index = this.activeTabIndex;
                 index--;
                 if (index < 0) {
-                    index = wrap ? this.tabs.length - 1 : index + 1;
+                    index = cycle ? this.tabs.length - 1 : index + 1;
                 }
                 this.selectTabByIndex(index, true);
             },

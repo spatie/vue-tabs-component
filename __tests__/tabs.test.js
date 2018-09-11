@@ -202,12 +202,12 @@ describe('vue-tabs-component', () => {
     it('gets and sets tabs by index number', async () => {
         const tabs = await createVm();
 
-        expect(tabs.getActiveTabIndex()).toEqual(0);
+        expect(tabs.activeTabIndex).toEqual(0);
         tabs.selectTabByIndex(1);
         expect(tabs.activeTabHash).toEqual('#second-tab');
-        expect(tabs.getActiveTabIndex()).toEqual(1);
+        expect(tabs.activeTabIndex).toEqual(1);
         tabs.nextTab();
-        expect(tabs.getActiveTabIndex()).toEqual(2);
+        expect(tabs.activeTabIndex).toEqual(2);
     });
 });
 
