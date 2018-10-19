@@ -200,7 +200,7 @@ When disabling the cache, it can be useful to specify a default tab to load whic
 
 ### CSS
 
-You can use the [CSS](docs/resources/tabs-component.css) from the docs as a starting point for your own styling.
+You can use the [CSS](docs/resources/tabs-component.css), as well as the [mobile CSS](docs/resources/tabs-component-mobile-theme.css), from the docs as a starting point for your own styling.
 The output HTML has namespaced classes to target all nodes directly.
 
 ```html

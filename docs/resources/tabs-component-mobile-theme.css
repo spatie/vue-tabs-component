@@ -1,0 +1,25 @@
+@media (max-width: 699px) {
+  .tabs-component-tabs {
+    margin-bottom: 0;
+    border-left: 1px solid #666666;
+    border-top: 1px solid #666666;
+    border-right: 1px solid #666666;
+    border-bottom: 1px solid #ffffff;
+    border-radius: 6px 6px 0 0;
+  }
+  .tabs-component-tab.is-active {
+      color: #ffffff;
+      background: #666666;
+  }
+  .tabs-component-panels {
+    padding: 0;
+    color: #ffffff;
+    background: #666666;
+    border: 1px solid #666666;
+    border-radius: 0 0 6px 6px;
+  }
+  .tabs-component-panel {
+    padding: 2rem;
+    transition: all .3s;
+  }
+}
